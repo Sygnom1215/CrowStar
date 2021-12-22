@@ -10,7 +10,7 @@ public class RingPuzzle : MonoBehaviour
     List<Ring> rings = new List<Ring>();
 
     private float sizeOffset = 350f;
-    private float increment = 190f;
+    private float increment = 150f;
     private bool isGameOver;
 
     private void Start()
@@ -53,7 +53,7 @@ public class RingPuzzle : MonoBehaviour
 
         for(int i = 0; i< rings.Count; i++)
         {
-            rings[i].gameObject.SetActive(false);
+            rings[i].SetColor();
         }
     }
 }

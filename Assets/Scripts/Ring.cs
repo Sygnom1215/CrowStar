@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ring : MonoBehaviour
 {
     private RectTransform rectTransform;
     [SerializeField] private Transform planet;
+    private Image image;
     private bool isReverse;
     private float speed = 50f;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        image = GetComponent<Image>();
     }
     private void Update()
     {
@@ -44,5 +47,10 @@ public class Ring : MonoBehaviour
     public bool CheckPosition(Vector2 one, Vector2 two)
     {
         return (Vector2.Distance(one, planet.transform.position) < 1.2f && Vector2.Distance(two, planet.transform.position) < 1.2f);
+    }
+
+    public void SetColor()
+    {
+        image.color = Color.yellow;
     }
 }
