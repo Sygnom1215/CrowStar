@@ -15,5 +15,6 @@ public class ItemObject : MonoBehaviour
     private void OnMouseUp()
     {
         GameManager.Instance.AddInventory(item);
+        Destroy(gameObject);
     }
 }
