@@ -7,19 +7,23 @@ public class RingPuzzle : MonoBehaviour
     [SerializeField] private int index;
     [SerializeField] private GameObject ring = null;
 
-    List<GameObject> rings = new List<GameObject>();
+    List<RectTransform> rings = new List<RectTransform>();
 
     private void Start()
     {
-        
+        InstantiateRings();
     }
 
     private void InstantiateRings()
     {
-        for(int i = 0; i<index; i++)
+        for (int i = 0; i < index; i++)
         {
             GameObject obj = Instantiate(ring, ring.transform.parent);
-            rings.Add(obj);
+            RectTransform rect = obj.GetComponent<RectTransform>();
+            rect.sizeDelta = new Vector2(350 + i * 100, 350 + i * 100);
+            rings.Add(rect);
         }
+
+        ring.SetActive(false);
     }
 }
