@@ -1,47 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MousePointerMove : MonoBehaviour
 {
-    public GameObject magnifying;
-    private Vector3 mousePointer;
+    public RectTransform glass;
+
+    private void Start()
+    {
+        Init_Cursor();
+    }
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            OnMouseDown();
-            Debug.Log("ÀÔ·ÂÁß");
-        } 
-        if(Input.GetMouseButton(0))
-        {
-            OnMouseDrag();
-        }
+        Update_MousePosition();
+    }
+    private void Init_Cursor()
+    {
+        Cursor.visible = false;
+
+        if (glass.GetComponent<Graphic>())
+            glass.GetComponent<Graphic>().raycastTarget = false;
     }
 
-    void OnMouseDown()
+    private void Update_MousePosition()
     {
-        mousePointer = Input.mousePosition;
-        mousePointer.z = 10;
-        mousePointer = Camera.main.ScreenToWorldPoint(mousePointer);
-    }
+        Vector2 worldPointion = Input.mousePosition;
 
-    void OnMouseDrag()
-    {
-        Vector3 worldPoint = Input.mousePosition;
-        worldPoint.z = 10;
-        worldPoint = Camera.main.ScreenToWorldPoint(worldPoint);
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(worldPointion);
 
-        Vector3 diffPos = worldPoint - mousePointer;
-        diffPos.z = 0;
+        glass.position = mousePos;
 
-        mousePointer = Input.mousePosition;
-        mousePointer.z = 10;
-        mousePointer = Camera.main.ScreenToWorldPoint(mousePointer);
-
-        magnifying.transform.position =
-            new Vector3(Mathf.Clamp(magnifying.transform.position.x + diffPos.x, -4.5f, 4.5f) 
-            , magnifying.transform.position.y + diffPos.y, magnifying.transform.position.z);
+        glass.position = glass.position;
     }
 }
