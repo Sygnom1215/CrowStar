@@ -46,7 +46,7 @@ public class Ring : MonoBehaviour
 
     public bool CheckPosition(Vector2 one, Vector2 two)
     {
-        return (Vector2.Distance(one, planet.transform.position) < 1.2f && Vector2.Distance(two, planet.transform.position) < 1.2f);
+        return (Vector2.Distance(one, planet.transform.position) < 1.1f && Vector2.Distance(two, planet.transform.position) < 1.1f);
     }
 
     public void SetColor()
