@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 
 public class UIManager : MonoBehaviour
@@ -15,6 +16,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button nextButton;
     [SerializeField] private Button previousButton;
 
+    [SerializeField] private Button zoomOutButton;
+
+    private RectTransform inventoryBar;
+
     int sceneIndex = 0;
 
     private void Start()
@@ -23,7 +28,8 @@ public class UIManager : MonoBehaviour
 
         nextButton.onClick.AddListener(() => NextBackgroundButton());
         previousButton.onClick.AddListener(() => PreviousBackgroundButton());
-
+        zoomOutButton.onClick.AddListener(() => GameManager.Instance.ZoomOutCamera());
+        inventoryBar = inventoryPanel.transform.parent.parent.GetComponent<RectTransform>();
         SetActiveButton();
     }
 
@@ -153,5 +159,15 @@ public class UIManager : MonoBehaviour
             if (inventoryPanels[i].GetItem().itemType == itemType)
                 inventoryPanels[i].Remove();
         }
+    }
+
+    public void AcriveZoomOutButton(bool isActive)
+    {
+        zoomOutButton.gameObject.SetActive(isActive);
+    }
+
+    public void HideOrAppearInventory()
+    {
+        inventoryBar.DOAnchorPosY(-inventoryBar.anchoredPosition.y, 0.5f);
     }
 }

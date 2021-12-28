@@ -11,10 +11,13 @@ public class InventoryPanel : MonoBehaviour, IPointerUpHandler
     private Item item = null;
     private Image image = null;
     [SerializeField] private Image itemImage = null;
+    private Color32 originColor;
+    private Color32 selectedColor = new Color32(174,174,174,214);
     
     void Awake()
     {
         image = GetComponent<Image>();
+        originColor = image.color;
         itemImage.color = Color.clear;
     }
 
@@ -71,7 +74,7 @@ public class InventoryPanel : MonoBehaviour, IPointerUpHandler
 
     public void OffActiveEffect()
     {
-        image.color = Color.white;
+        image.color = originColor;
     }
 
     public int GetIndex()
