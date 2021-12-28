@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button nextButton;
     [SerializeField] private Button previousButton;
 
-    int index = 0;
+    int sceneIndex = 0;
 
     private void Start()
     {
@@ -90,8 +90,9 @@ public class UIManager : MonoBehaviour
     public void NextBackgroundButton()
     {
         int stageNum = GameManager.Instance.GetCurrentStage();
-        if (index > backgroundsList[stageNum].GetCount()) return;
-        backgroundsList[stageNum].ActiveBackgrounds(++index);
+        if (sceneIndex > backgroundsList[stageNum].GetCount()) return;
+        backgroundsList[stageNum].ActiveBackgrounds(++sceneIndex);
+        GameManager.Instance.PuzzleManager.ActivePuzzleScene();
 
         SetActiveButton();
     }
@@ -99,8 +100,9 @@ public class UIManager : MonoBehaviour
     public void PreviousBackgroundButton()
     {
         int stageNum = GameManager.Instance.GetCurrentStage();
-        if (index > backgroundsList[stageNum].GetCount()) return;
-        backgroundsList[stageNum].ActiveBackgrounds(--index);
+        if (sceneIndex > backgroundsList[stageNum].GetCount()) return;
+        backgroundsList[stageNum].ActiveBackgrounds(--sceneIndex);
+        GameManager.Instance.PuzzleManager.ActivePuzzleScene();
 
         SetActiveButton();
     }
@@ -109,8 +111,8 @@ public class UIManager : MonoBehaviour
     {
         int stageNum = GameManager.Instance.GetCurrentStage();
 
-        nextButton.gameObject.SetActive(!(index >= backgroundsList[stageNum].GetCount() - 1));
-        previousButton.gameObject.SetActive(!(index == 0));
+        nextButton.gameObject.SetActive(!(sceneIndex >= backgroundsList[stageNum].GetCount() - 1));
+        previousButton.gameObject.SetActive(!(sceneIndex == 0));
     }
 
     public void SetActiveChapter()
@@ -124,5 +126,32 @@ public class UIManager : MonoBehaviour
     public void OnUseItem()
     {
         inventoryPanels[GameManager.Instance.GetActiveIndex()].Remove();
+    }
+
+    public int GetSceneIndex()
+    {
+        return sceneIndex;
+    }
+
+    public bool CheckIsInInventory(ItemType itemType)
+    {
+        for(int i = 0; i<inventoryPanels.Count;i++)
+        {
+            if (inventoryPanels[i].GetIsEmpty()) continue;
+
+            if (inventoryPanels[i].GetItem().itemType == itemType) return true;
+        }
+        return false;
+    }
+
+    public void RemoveItem(ItemType itemType)
+    {
+        for (int i = 0; i < inventoryPanels.Count; i++)
+        {
+            if (inventoryPanels[i].GetIsEmpty()) continue;
+
+            if (inventoryPanels[i].GetItem().itemType == itemType)
+                inventoryPanels[i].Remove();
+        }
     }
 }

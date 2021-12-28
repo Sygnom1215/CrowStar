@@ -17,7 +17,15 @@ public class ItemObject : MonoBehaviour
 
     private void OnPut()
     {
-        GameManager.Instance.AddInventory(item);
+        if(GameManager.Instance.UIManager.CheckIsInInventory(itemType))
+        {
+            GameManager.Instance.UIManager.RemoveItem(itemType);
+            GameManager.Instance.UIManager.AddInventory(GameManager.Instance.items[(int)ItemType.Key]);
+        }
+        else
+        {
+            GameManager.Instance.AddInventory(item);
+        }
         Destroy(gameObject);
     }
 }

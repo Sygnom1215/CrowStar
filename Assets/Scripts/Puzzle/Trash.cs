@@ -13,8 +13,10 @@ public class Trash : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+        Vector2 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position =
+            new Vector3(Mathf.Clamp(targetPos.x, ConstantManager.MIN_POSITION.x, ConstantManager.MAX_POSITION.x),
+            Mathf.Clamp(targetPos.y, ConstantManager.MIN_POSITION.y, ConstantManager.MAX_POSITION.y), 0f);
     }
 
     private void OnMouseUp()

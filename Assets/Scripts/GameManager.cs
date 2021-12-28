@@ -7,6 +7,7 @@ public class GameManager : MonoSingleton<GameManager>
     public List<Item> items = new List<Item>();
     public List<Item> userItems { get; private set; } = new List<Item>();
     public UIManager UIManager { get; private set; }
+    public PuzzleManager PuzzleManager { get; private set; }
 
     private int activeItemIndex;
 
@@ -16,6 +17,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Awake()
     {
         UIManager = GetComponent<UIManager>();
+        PuzzleManager = GetComponent<PuzzleManager>();
     }
 
     public void AddInventory(Item item)
