@@ -68,6 +68,5 @@ public class DialogDisplay : MonoBehaviour
         activeTalkerUI.Show();
         //activeTalkerUI.TextSmooth();
         // DOText전에 text비우기
-
     }
 }

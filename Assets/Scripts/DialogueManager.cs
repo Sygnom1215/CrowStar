@@ -30,6 +30,7 @@ public class DialogueManager : MonoBehaviour
     private void SetDialogue(int id)
     {
         string dialogueData = dialogueSet.GetDialogue(id, dialogueIndex);
+        Debug.Log(id);
 
         if (dialogueData == null)
         {

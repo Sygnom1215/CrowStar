@@ -4,5 +4,6 @@ public enum ItemType
     Key,
     Compass,
     Lamp,
-    Paddle
+    Paddle,
+    Count
 }

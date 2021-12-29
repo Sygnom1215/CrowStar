@@ -8,6 +8,7 @@ public class GameManager : MonoSingleton<GameManager>
     public List<Item> userItems { get; private set; } = new List<Item>();
     public UIManager UIManager { get; private set; }
     public PuzzleManager PuzzleManager { get; private set; }
+    public DialogueManager DialogueManager { get; private set; }
 
     private int activeItemIndex;
 
@@ -23,6 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
         cameraSize = mainCam.orthographicSize;
         UIManager = GetComponent<UIManager>();
         PuzzleManager = GetComponent<PuzzleManager>();
+        DialogueManager = FindObjectOfType<DialogueManager>();
     }
 
     public void AddInventory(Item item)
@@ -62,6 +64,11 @@ public class GameManager : MonoSingleton<GameManager>
     public ItemType GetItemType()
     {
         return curItem.itemType;
+    }
+
+    public Item GetCurItem()
+    {
+        return curItem;
     }
 
     public Camera GetMainCam()

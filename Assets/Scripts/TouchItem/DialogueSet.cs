@@ -18,6 +18,7 @@ public class DialogueSet : MonoBehaviour
     {
         dialogueData.Add(10, new string[] { "≥»≥»≥»≥»≥»≥»≥»≥»≥»≥»≥»≥»≥»≥»≥»" });
         dialogueData.Add(20, new string[] { "¿Ã∞«...", "ππ¡ˆ..?" });
+        dialogueData.Add(30, new string[] { "¿·∞‹¿÷¥¬ ∞Õ ∞∞¥Ÿ." });
     }
     
     public string GetDialogue(int id, int dialogueIndex)
