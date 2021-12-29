@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MousePointerMove : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandler
 {
     public RectTransform glass;
-
+    public bool isDrag;
     private void Start()
     {
         Init_Cursor();
@@ -27,10 +27,12 @@ public class MousePointerMove : MonoBehaviour, IBeginDragHandler, IDragHandler,I
     public void OnEndDrag(PointerEventData eventData)
     {
         Cursor.visible = true;
+        isDrag = false;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         Cursor.visible = false;
+        isDrag = true;
     }
 }

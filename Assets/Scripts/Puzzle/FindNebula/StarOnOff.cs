@@ -7,20 +7,26 @@ using UnityEngine.UI;
 public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private GameObject star = null;
-
+    [SerializeField] private MousePointerMove pointer = null;
+    Image image;
     private bool starOnOff = false;
 
     private int click = 0;
 
+    private void Start()
+    {
+        image = GetComponent<Image>();
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         starOnOff = true;
+        if (!pointer.isDrag) return;
 
         if(starOnOff)
         {
-            Color color = star.GetComponent<Image>().color;
+            Color color = image.color;
             color.a = 1f;
-            star.GetComponent<Image>().color = color;
+            image.color = color;
         }
     }
 
@@ -28,9 +34,9 @@ public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (!starOnOff && click <= 0)
         {
-            Color color = star.GetComponent<Image>().color;
+            Color color = image.color;
             color.a = 0f;
-            star.GetComponent<Image>().color = color;
+            image.color = color;
         }
     }
 
@@ -44,9 +50,9 @@ public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
             if (starOnOff)
             {
-                Color color = star.GetComponent<Image>().color;
+                Color color = image.color;
                 color.a = 1f;
-                star.GetComponent<Image>().color = color;
+                image.color = color;
             }
         }
     }
