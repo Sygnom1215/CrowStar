@@ -6,6 +6,7 @@ public class PuzzleManager : MonoBehaviour
 {
     [SerializeField] private GameObject trashObject;
     [SerializeField] private List<PuzzleScene> puzzleScenes;
+    public GameObject puzzleScene;
 
     private void Start()
     {
@@ -33,6 +34,11 @@ public class PuzzleManager : MonoBehaviour
     private bool CheckIsCurrentPuzzle(PuzzleScene puzzleScene)
     {
         return (puzzleScene.chapter == GameManager.Instance.GetCurrentStage() && puzzleScene.sceneNumber == GameManager.Instance.UIManager.GetSceneIndex());
+    }
+
+    public void SetActivePuzzleScene(bool isActive)
+    {
+        puzzleScene.SetActive(isActive);
     }
 }
 

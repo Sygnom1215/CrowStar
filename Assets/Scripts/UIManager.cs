@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
         nextButton.onClick.AddListener(() => NextBackgroundButton());
         previousButton.onClick.AddListener(() => PreviousBackgroundButton());
-        zoomOutButton.onClick.AddListener(() => GameManager.Instance.ZoomOutCamera());
+        zoomOutButton.onClick.AddListener(() => zoomOutButton.gameObject.SetActive(false));
         inventoryBar = inventoryPanel.transform.parent.parent.GetComponent<RectTransform>();
         SetActiveButton();
     }
@@ -113,7 +113,7 @@ public class UIManager : MonoBehaviour
         SetActiveButton();
     }
 
-    private void SetActiveButton()
+    public void SetActiveButton()
     {
         int stageNum = GameManager.Instance.GetCurrentStage();
 
@@ -161,7 +161,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void AcriveZoomOutButton(bool isActive)
+    public void ActiveZoomOutButton(bool isActive)
     {
         zoomOutButton.gameObject.SetActive(isActive);
     }
@@ -169,5 +169,11 @@ public class UIManager : MonoBehaviour
     public void HideOrAppearInventory()
     {
         inventoryBar.DOAnchorPosY(-inventoryBar.anchoredPosition.y, 0.5f);
+    }
+
+    public void HideStageButton()
+    {
+        nextButton.gameObject.SetActive(false);
+        previousButton.gameObject.SetActive(false);
     }
 }
