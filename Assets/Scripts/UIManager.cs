@@ -1,26 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject inventoryPanel = null;
     private int maxInventory = 9;
+
+    [SerializeField] private GameObject inventoryPanel = null;
     private List<InventoryPanel> inventoryPanels = new List<InventoryPanel>();
     [SerializeField] private List<Backgrounds> backgroundsList;
     [SerializeField] private List<GameObject> chapterObjects;
 
     [SerializeField] private Button nextButton;
     [SerializeField] private Button previousButton;
-
     [SerializeField] private Button zoomOutButton;
 
     private RectTransform inventoryBar;
-
-    int sceneIndex = 0;
+    private int sceneIndex = 0;
 
     private void Start()
     {
@@ -28,7 +25,6 @@ public class UIManager : MonoBehaviour
 
         nextButton.onClick.AddListener(() => NextBackgroundButton());
         previousButton.onClick.AddListener(() => PreviousBackgroundButton());
-        zoomOutButton.onClick.AddListener(() => zoomOutButton.gameObject.SetActive(false));
         inventoryBar = inventoryPanel.transform.parent.parent.GetComponent<RectTransform>();
         SetActiveButton();
     }

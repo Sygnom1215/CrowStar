@@ -9,9 +9,8 @@ public class ZoomObject : MonoBehaviour, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        GameManager.Instance.UIManager.ActiveZoomOutButton(true);
         GameManager.Instance.UIManager.HideStageButton();
-        GameManager.Instance.PuzzleManager.puzzleScene = puzzleField;
+        GameManager.Instance.PuzzleManager.AddPuzzleScene(puzzleField);
         puzzleField.SetActive(true);
     }
 }

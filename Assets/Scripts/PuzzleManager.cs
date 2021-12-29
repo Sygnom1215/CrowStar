@@ -5,19 +5,21 @@ using UnityEngine;
 public class PuzzleManager : MonoBehaviour
 {
     [SerializeField] private GameObject trashObject;
+    [SerializeField] private GameObject rockObject;
     [SerializeField] private List<PuzzleScene> puzzleScenes;
-    public GameObject puzzleScene;
+    public List<GameObject> curPuzzles;
 
     private void Start()
     {
-        StartTrashPuzzle();
+        StartTrashPuzzle(trashObject, 35);
+        StartTrashPuzzle(rockObject, 50);
     }
 
-    public void StartTrashPuzzle()
+    public void StartTrashPuzzle(GameObject template, int count)
     {
-        for (int i = 0; i < 35; i++)
+        for (int i = 0; i < count; i++)
         {
-            GameObject obj = Instantiate(trashObject, trashObject.transform.parent);
+            GameObject obj = Instantiate(template, template.transform.parent);
             obj.transform.position = new Vector3(Random.Range(-9f, 9f), Random.Range(-4f, 4f), 10f);
             obj.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, Random.Range(0f, 360f)));
         }
@@ -38,7 +40,15 @@ public class PuzzleManager : MonoBehaviour
 
     public void SetActivePuzzleScene(bool isActive)
     {
-        puzzleScene.SetActive(isActive);
+        curPuzzles[curPuzzles.Count - 1].SetActive(isActive);
+        curPuzzles.RemoveAt(curPuzzles.Count - 1);
+        GameManager.Instance.UIManager.ActiveZoomOutButton(!(curPuzzles.Count == 0));
+    }
+
+    public void AddPuzzleScene(GameObject obj)
+    {
+        GameManager.Instance.UIManager.ActiveZoomOutButton(true);
+        curPuzzles.Add(obj);
     }
 }
 

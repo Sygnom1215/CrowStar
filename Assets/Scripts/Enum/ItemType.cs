@@ -5,5 +5,7 @@ public enum ItemType
     Compass,
     Lamp,
     Paddle,
+    Matches,
+    Bucket,
     Count
 }
