@@ -1,5 +1,8 @@
 public enum ItemType
 {
     BrokenKey,
-    Key
+    Key,
+    Compass,
+    Lamp,
+    Paddle
 }
