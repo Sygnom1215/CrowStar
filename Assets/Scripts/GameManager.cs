@@ -1,105 +1,83 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 using DG.Tweening;
 
-public class GameManager : MonoSingleton<GameManager>
+public class GameManager : MonoBehaviour
 {
-    public List<Item> items = new List<Item>();
-    public List<Item> userItems { get; private set; } = new List<Item>();
-    public UIManager UIManager { get; private set; }
-    public PuzzleManager PuzzleManager { get; private set; }
 
-    private int activeItemIndex;
+    [SerializeField] private DialogueManager dialogueManager = null;
+    [SerializeField] private GameObject panel = null;
+    [SerializeField] private GameObject dialogue = null;
+    [SerializeField] private Text dialogueText = null;
+    
+    private GameObject scanObject = null;
+    private int dialogueIndex = 0;
+    private string dialogueData = null;
+    private bool isAction = false;
+    [SerializeField] private bool isTypingCheck = false;
+    [SerializeField] private bool isSkipCheck = false;
 
-    public Item curItem { get; private set; } = null;
-    [SerializeField] private int currentStage;
-
-    private Camera mainCam;
-    private float cameraSize;
-
-    private void Awake()
+    public void Action(GameObject scanObj)
     {
-        mainCam = Camera.main;
-        cameraSize = mainCam.orthographicSize;
-        UIManager = GetComponent<UIManager>();
-        PuzzleManager = GetComponent<PuzzleManager>();
+        isAction = true;
+        scanObject = scanObj;
+        ObjectData objectData = scanObject.GetComponent<ObjectData>();
+        panel.SetActive(isAction);
+        SetDialogue(objectData.id);
     }
 
-    public void AddInventory(Item item)
+    private void SetDialogue(int id)
     {
-        userItems.Add(item);
-        UIManager.AddInventory(item);
-    }
+        string dialogueData = dialogueManager.GetDialogue(id, dialogueIndex);
 
-    public void SetCurrentStage(int curStage)
-    {
-        currentStage = curStage;
-        UIManager.SetActiveChapter();
-    }
-
-
-    #region GetSet
-    public int GetCurrentStage()
-    {
-        return currentStage;
-    }
-
-    public void SetActiveIndex(int index)
-    {
-        activeItemIndex = index;
-    }
-
-    public int GetActiveIndex()
-    {
-        return activeItemIndex;
-    }
-
-    public void SetItem(Item item)
-    {
-        curItem = item;
-    }
-
-    public ItemType GetItemType()
-    {
-        return curItem.itemType;
-    }
-
-    public void ZoomInCamera(Vector2 pos)
-    {
-        float zoomDuration = 1f;
-        mainCam.DOOrthoSize(3f, zoomDuration);
-        mainCam.transform.DOMove(FitCamera(pos, 3f), zoomDuration);
-
-        UIManager.AcriveZoomOutButton(true);
-    }
-
-    public void ZoomOutCamera()
-    {
-        mainCam.transform.DOMove(Vector2.zero, 1f);
-        mainCam.DOOrthoSize(cameraSize, 1f);
-        UIManager.AcriveZoomOutButton(false);
-    }
-
-    private Vector2 FitCamera(Vector2 pos, float zoom)
-    {
-        float matchX = Mathf.Abs((cameraSize - zoom) / cameraSize * ConstantManager.MIN_POSITION.x);
-        float matchY = Mathf.Abs((cameraSize - zoom) / cameraSize * ConstantManager.MIN_POSITION.y);
-
-        if (Mathf.Abs(pos.x) > matchX)
+        if (dialogueData == null)
         {
-            if (pos.x > 0) pos = new Vector2(matchX, pos.y);
-            else pos = new Vector2(-matchX, pos.y);
+            dialogueIndex = 0;
+            isAction = false;
+            return;
         }
 
-        if (Mathf.Abs(pos.y) > matchY)
-        {
-            if (pos.y > 0) pos = new Vector2(pos.x, matchY);
-            else
-                pos = new Vector2(pos.x, -matchY);
-        }
+        StartCoroutine(Typing(dialogueData));
 
-        return pos;
+        dialogueIndex++;
     }
 
-    #endregion
+    public void ShowDialogue()
+    {
+        Debug.Log("쇼다이얼로그");
+        if (isTypingCheck || isSkipCheck) return;
+        ObjectData objectData = scanObject.GetComponent<ObjectData>();
+        SetDialogue(objectData.id);
+        panel.SetActive(isAction);
+    }
+
+    public void SkipCheck()
+    {
+        Debug.Log("스킵체크");
+        if (isTypingCheck)
+            isSkipCheck = true;
+    }    
+
+    public IEnumerator Typing(string targetText)
+    {
+        dialogueText.text = "";
+        for (int i = 0; i <= targetText.Length; i++)
+        {
+            isTypingCheck = true;
+            dialogueText.text = targetText.Substring(0, i);
+            yield return new WaitForSeconds(.15f);
+            if (isSkipCheck)
+            {
+                Debug.Log("타이핑 스킵 체크");
+                dialogueText.text = targetText;
+                isTypingCheck = false;
+                isSkipCheck = false;
+                break;
+            }
+
+            isTypingCheck = false;
+            isSkipCheck = false;
+        }
+    }
 }
