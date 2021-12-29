@@ -21,9 +21,10 @@ public class DialogueManager : MonoBehaviour
     {
         isAction = true;
         scanObject = scanObj;
-        ObjectData objectData = scanObject.GetComponent<ObjectData>();
+        ItemObject itemObject = scanObj.GetComponent<ItemObject>();
+        //ItemType itemType = scanObj.GetComponent<ItemType>();
         panel.SetActive(isAction);
-        SetDialogue(objectData.id);
+        SetDialogue(itemObject.itemData.id);
     }
 
     private void SetDialogue(int id)
@@ -44,16 +45,18 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowDialogue()
     {
-        Debug.Log("쇼다이얼로그");
         if (isTypingCheck || isSkipCheck) return;
-        ObjectData objectData = scanObject.GetComponent<ObjectData>();
-        SetDialogue(objectData.id);
+        ItemObject itemObject = scanObject.GetComponent<ItemObject>();
+        SetDialogue(itemObject.itemData.id);
+        if(isAction==false)
+        {
+            itemObject.DestroyObject();
+        }
         panel.SetActive(isAction);
     }
 
     public void SkipCheck()
     {
-        Debug.Log("스킵체크");
         if (isTypingCheck)
             isSkipCheck = true;
     }
@@ -68,7 +71,6 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(.15f);
             if (isSkipCheck)
             {
-                Debug.Log("타이핑 스킵 체크");
                 dialogueText.text = targetText;
                 isTypingCheck = false;
                 isSkipCheck = false;
