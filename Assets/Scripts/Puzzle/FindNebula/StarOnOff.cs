@@ -14,7 +14,6 @@ public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("´ê´Â");
         starOnOff = true;
 
         if(starOnOff)
@@ -27,8 +26,6 @@ public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("¾È´ê´Â");
-
         if (!starOnOff && click <= 0)
         {
             Color color = star.GetComponent<Image>().color;
