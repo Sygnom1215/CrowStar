@@ -1,6 +1,7 @@
-using UnityEngine;
 
-public class ObjectData : MonoBehaviour
+[System.Serializable]
+public class ObjectData
 {
+    public ItemType itemType;
     public int id;
 }
