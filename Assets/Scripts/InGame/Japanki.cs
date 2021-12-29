@@ -5,10 +5,6 @@ using UnityEngine;
 public class Japanki : ObjectBase
 {
     private int changeItemIndex = 1;
-    protected override void OnMouseUp()
-    {
-        base.OnMouseUp();
-    }
 
     public override void OnClick()
     {
