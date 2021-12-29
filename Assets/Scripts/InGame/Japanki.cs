@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Japanki : MonoBehaviour
+public class Japanki : ObjectBase
 {
-    private bool CheckItems()
+    private int changeItemIndex = 1;
+    protected override void OnMouseUp()
     {
-        for (int i = 0; i < GameManager.Instance.userItems.Count; i++)
-        {
-            if (GameManager.Instance.userItems[i].itemType == ItemType.Hammer)
-            {
-                GameManager.Instance.userItems[i] = GameManager.Instance.items[1];
-            }
-        
-        }
-        return false;
+        base.OnMouseUp();
     }
+
+    public override void OnClick()
+    {
+
+        if (CheckIsCorrect(GameManager.Instance.curItem.itemType))
+        {
+            GameManager.Instance.AddInventory(GameManager.Instance.items[changeItemIndex]); 
+            Debug.Log("O");
+        }
+        else
+        {
+            Debug.Log("X");
+            return;
+        }
+        return;
+    }
+
 }

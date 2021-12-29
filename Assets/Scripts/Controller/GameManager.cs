@@ -15,10 +15,12 @@ public class GameManager : MonoSingleton<GameManager>
     private void Awake()
     {
         UIManager = GetComponent<UIManager>();
+        userItems = new List<Item>();
     }
 
     public void AddInventory(Item item)
     {
+        Debug.Log(userItems);
         userItems.Add(item);
         UIManager.AddInventory(item);
     }
