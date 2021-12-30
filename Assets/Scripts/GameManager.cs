@@ -16,12 +16,10 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private int currentStage;
 
     private Camera mainCam;
-    private float cameraSize;
 
     private void Awake()
     {
         mainCam = Camera.main;
-        cameraSize = mainCam.orthographicSize;
         UIManager = GetComponent<UIManager>();
         PuzzleManager = GetComponent<PuzzleManager>();
         DialogueManager = FindObjectOfType<DialogueManager>();

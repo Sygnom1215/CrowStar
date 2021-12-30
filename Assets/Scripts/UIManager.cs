@@ -128,6 +128,8 @@ public class UIManager : MonoBehaviour
     public void OnUseItem()
     {
         inventoryPanels[GameManager.Instance.GetActiveIndex()].Remove();
+        GameManager.Instance.userItems.Remove(GameManager.Instance.items.Find(x => x.itemType == GameManager.Instance.GetCurItem().itemType));
+        inventoryPanels[0].Settings();
     }
 
     public int GetSceneIndex()

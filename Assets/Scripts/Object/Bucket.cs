@@ -11,8 +11,11 @@ public class Bucket : ObjectBase
 
     public override void OnClick()
     {
-        if(CheckIsCorrect(itemType))
+        Debug.Log("sssdf");
+
+        if (CheckIsCorrect(itemType))
         {
+            Debug.Log("sdf");
             GameManager.Instance.UIManager.RemoveItem(itemType);
             GameManager.Instance.UIManager.AddInventory(GameManager.Instance.items[(int)ItemType.OilBottle]);
         }
