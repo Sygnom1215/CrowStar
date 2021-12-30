@@ -22,6 +22,7 @@ public class DialogueSet : MonoBehaviour
         dialogueData.Add(40, new string[] { "열쇠...? 어디에 쓰는 거지?" });
         dialogueData.Add(50, new string[] { "성냥갑을 주웠다!" });
         dialogueData.Add(60, new string[] { "기름이 담긴 양동이 같다." });
+        dialogueData.Add(70, new string[] { "별이 예쁘네." });
     }
     
     public string GetDialogue(int id, int dialogueIndex)
