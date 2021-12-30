@@ -20,8 +20,8 @@ public class Box : ObjectBase, IPointerUpHandler
 
         else
         {
+            Open();
             isOpen = true;
-            RemoveItem();
         }
     }
 
@@ -32,8 +32,10 @@ public class Box : ObjectBase, IPointerUpHandler
 
     private void Open()
     {
+        GameManager.Instance.UIManager.RemoveItem(itemType);
         GameManager.Instance.UIManager.HideStageButton();
         GameManager.Instance.PuzzleManager.AddPuzzleScene(inBoxObj);
+        base.RemoveItem();
         inBoxObj.SetActive(true);
     }
 }

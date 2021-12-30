@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectBase : MonoBehaviour
 {
     [SerializeField] protected ItemType itemType;
-    protected virtual void OnMouseClick()
+    public virtual void OnMouseClick()
     {
         if (CheckNull())
         {

@@ -27,6 +27,8 @@ public class ItemObject : MonoBehaviour
         else
         {
             GameManager.Instance.AddInventory(item);
+            if (itemData.id == 0)
+                DestroyObject();
         }
     }
     public void DestroyObject()

@@ -6,6 +6,7 @@ public enum ItemType
     Lamp,
     Paddle,
     Matches,
-    Bucket,
+    Bottle,
+    OilBottle,
     Count
 }

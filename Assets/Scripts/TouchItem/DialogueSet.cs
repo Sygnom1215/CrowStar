@@ -16,6 +16,7 @@ public class DialogueSet : MonoBehaviour
     // 할일: 스크립터블 오브젝트에 있는 데이터 써서 Dictionary에 넣어보기
     private void GenerationData()
     {
+        dialogueData.Add(0, null);
         dialogueData.Add(10, new string[] { "냠냠냠냠냠냠냠냠냠냠냠냠냠냠냠" });
         dialogueData.Add(20, new string[] { "이건...", "뭐지..?" });
         dialogueData.Add(30, new string[] { "잠겨있는 것 같다." });
@@ -23,6 +24,7 @@ public class DialogueSet : MonoBehaviour
         dialogueData.Add(50, new string[] { "성냥갑을 주웠다!" });
         dialogueData.Add(60, new string[] { "기름이 담긴 양동이 같다." });
         dialogueData.Add(70, new string[] { "별이 예쁘네." });
+        dialogueData.Add(80, new string[] { "하늘이 예쁘네." });
     }
     
     public string GetDialogue(int id, int dialogueIndex)
