@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bucket : ObjectBase
 {
+    private bool isServe;
     public override void OnMouseClick()
     {
         base.OnMouseClick();
@@ -11,13 +12,15 @@ public class Bucket : ObjectBase
 
     public override void OnClick()
     {
-        Debug.Log("sssdf");
-
-        if (CheckIsCorrect(itemType))
+        if (CheckIsCorrect(GameManager.Instance.GetItemType()) && !isServe)
         {
-            Debug.Log("sdf");
+            isServe = true;
             GameManager.Instance.UIManager.RemoveItem(itemType);
             GameManager.Instance.UIManager.AddInventory(GameManager.Instance.items[(int)ItemType.OilBottle]);
+        }
+        else if (!CheckIsCorrect(GameManager.Instance.GetItemType()) || GameManager.Instance.GetCurItem()==null)
+        {
+            GameManager.Instance.DialogueManager.Action(gameObject);
         }
     }
 }

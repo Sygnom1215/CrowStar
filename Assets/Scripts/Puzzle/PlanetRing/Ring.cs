@@ -10,6 +10,7 @@ public class Ring : MonoBehaviour
     private Image image;
     private bool isReverse;
     private float speed = 50f;
+    private bool isGameOver;
 
     private void Awake()
     {
@@ -18,6 +19,8 @@ public class Ring : MonoBehaviour
     }
     private void Update()
     {
+        if (isGameOver) return;
+
         if (isReverse)
         {
             transform.Rotate(new Vector3(0f, 0f, speed * Time.deltaTime));
@@ -49,8 +52,9 @@ public class Ring : MonoBehaviour
         return (Vector2.Distance(one, planet.transform.position) < 1.1f && Vector2.Distance(two, planet.transform.position) < 1.1f);
     }
 
-    public void SetColor()
+    public void GameOver()
     {
         image.color = Color.yellow;
+        isGameOver = true;
     }
 }

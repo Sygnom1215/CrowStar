@@ -69,7 +69,7 @@ public class DialogueManager : MonoBehaviour
         {
             isTypingCheck = true;
             dialogueText.text = targetText.Substring(0, i);
-            yield return new WaitForSeconds(.15f);
+            yield return new WaitForSeconds(.05f);
             if (isSkipCheck)
             {
                 dialogueText.text = targetText;

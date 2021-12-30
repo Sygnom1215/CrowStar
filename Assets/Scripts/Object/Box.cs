@@ -21,6 +21,7 @@ public class Box : ObjectBase, IPointerUpHandler
         else
         {
             Open();
+            base.RemoveItem();
             isOpen = true;
         }
     }
@@ -32,7 +33,6 @@ public class Box : ObjectBase, IPointerUpHandler
 
     private void Open()
     {
-        base.RemoveItem();
         GameManager.Instance.UIManager.HideStageButton();
         GameManager.Instance.PuzzleManager.AddPuzzleScene(inBoxObj);
         inBoxObj.SetActive(true);

@@ -6,6 +6,7 @@ public class RingPuzzle : MonoBehaviour
 {
     [SerializeField] private int index;
     [SerializeField] private GameObject ring = null;
+    [SerializeField] private GameObject compass = null;
 
     List<Ring> rings = new List<Ring>();
 
@@ -21,7 +22,9 @@ public class RingPuzzle : MonoBehaviour
     public void CheckGameOver()
     {
         if (CheckPlanet())
+        {
             GameOver();
+        }
     }
 
     private bool CheckPlanet()
@@ -53,7 +56,9 @@ public class RingPuzzle : MonoBehaviour
 
         for(int i = 0; i< rings.Count; i++)
         {
-            rings[i].SetColor();
+            rings[i].GameOver();
         }
+
+        compass.SetActive(true);
     }
 }
