@@ -8,5 +8,6 @@ public enum ItemType
     Matches,
     Bottle,
     OilBottle,
+    Branch,
     Count
 }

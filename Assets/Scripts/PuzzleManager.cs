@@ -6,6 +6,7 @@ public class PuzzleManager : MonoBehaviour
 {
     [SerializeField] private GameObject trashObject;
     [SerializeField] private GameObject rockObject;
+    [SerializeField] private GameObject leafObject;
     [SerializeField] private List<PuzzleScene> puzzleScenes;
     public List<GameObject> curPuzzles;
 
@@ -13,14 +14,15 @@ public class PuzzleManager : MonoBehaviour
     {
         StartTrashPuzzle(trashObject, 35);
         StartTrashPuzzle(rockObject, 50);
+        StartTrashPuzzle(leafObject, 30,4.5f,2f);
     }
 
-    public void StartTrashPuzzle(GameObject template, int count)
+    public void StartTrashPuzzle(GameObject template, int count, float x = 9f, float y = 4f)
     {
         for (int i = 0; i < count; i++)
         {
             GameObject obj = Instantiate(template, template.transform.parent);
-            obj.transform.position = new Vector3(Random.Range(-9f, 9f), Random.Range(-4f, 4f), 10f);
+            obj.transform.position = new Vector3(Random.Range(-x, x), Random.Range(-y, y), 10f);
             obj.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, Random.Range(0f, 360f)));
         }
     }
