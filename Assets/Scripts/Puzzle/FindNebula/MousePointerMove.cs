@@ -6,16 +6,6 @@ public class MousePointerMove : MonoBehaviour, IBeginDragHandler, IDragHandler,I
 {
     public RectTransform glass;
     public bool isDrag;
-    private void Start()
-    {
-        Init_Cursor();
-    }
-
-    private void Init_Cursor()
-    {
-        //if (glass.GetComponent<Graphic>())
-        //    glass.GetComponent<Graphic>().raycastTarget = false;
-    }
 
     public void OnDrag(PointerEventData eventData)
     {

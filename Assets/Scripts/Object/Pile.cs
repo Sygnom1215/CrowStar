@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pile : MonoBehaviour
+public class Pile : ObjectBase
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Boat boat;
+    [SerializeField] Lamp lamp;
+
+    public override void OnMouseClick()
     {
-        
+        OnClick();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnClick()
     {
-        
+        if (boat.CheckIsInBoat() && lamp.GetIsLight())
+        {
+            Debug.Log("³¡!!");
+        }
     }
 }

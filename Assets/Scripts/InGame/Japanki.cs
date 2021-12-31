@@ -4,22 +4,12 @@ using UnityEngine;
 
 public class Japanki : ObjectBase
 {
-    private int changeItemIndex = 1;
-
     public override void OnClick()
     {
-
-        if (CheckIsCorrect(GameManager.Instance.curItem.itemType))
+        if (CheckIsCorrect(GameManager.Instance.GetCurItem().itemType))
         {
-            GameManager.Instance.AddInventory(GameManager.Instance.items[changeItemIndex]); 
-            Debug.Log("O");
+            base.RemoveItem();
+            GameManager.Instance.AddInventory(GameManager.Instance.items.Find(x => x.itemType == ItemType.Paddle));
         }
-        else
-        {
-            Debug.Log("X");
-            return;
-        }
-        return;
     }
-
 }

@@ -17,6 +17,7 @@ public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         image = GetComponent<Image>();
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         starOnOff = true;

@@ -26,6 +26,6 @@ public class Boat : ObjectBase
 
     public bool CheckIsInBoat()
     {
-        return (cnt == itemTypes.Count - 1);
+        return (cnt == itemTypes.Count);
     }
 }

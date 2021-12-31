@@ -52,4 +52,9 @@ public class Lamp : ObjectBase
         image.sprite = sprites[index];
         base.RemoveItem();
     }
+
+    public bool GetIsLight()
+    {
+        return isLight;
+    }
 }
