@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button previousButton;
     [SerializeField] private Button zoomOutButton;
 
+    [SerializeField] private Text letterText;
+    [SerializeField] private GameObject letterPanel;
+
     private RectTransform inventoryBar;
     private int sceneIndex = 0;
 
@@ -173,5 +176,11 @@ public class UIManager : MonoBehaviour
     {
         nextButton.gameObject.SetActive(false);
         previousButton.gameObject.SetActive(false);
+    }
+
+    public void ShowLetter(string message)
+    {
+        letterText.text = message;
+        letterPanel.SetActive(true);
     }
 }
