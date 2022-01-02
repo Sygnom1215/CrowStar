@@ -15,11 +15,13 @@ public class ItemObject : MonoBehaviour
     public void OnPut()
     {
         if (itemData.itemType == ItemType.Count) return;
+
         if (itemData.itemType == ItemType.BrokenKey && GameManager.Instance.UIManager.CheckIsInInventory(itemData.itemType))
         {
             GameManager.Instance.UIManager.RemoveItem(itemData.itemType);
             GameManager.Instance.UIManager.AddInventory(GameManager.Instance.items[(int)ItemType.Key]);
         }
+
         else
         {
             GameManager.Instance.AddInventory(item);
@@ -30,6 +32,7 @@ public class ItemObject : MonoBehaviour
     public void DestroyObject()
     {
         if (itemData.itemType == ItemType.Count) return;
+
         Destroy(gameObject);
     }
 }
