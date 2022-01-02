@@ -5,18 +5,14 @@ public class ItemObject : MonoBehaviour
 {
     private Item item;
     [SerializeField] public ObjectData itemData;
-    private Button button;
 
     private void Start()
     {
         if (itemData.itemType != ItemType.Count)
             item = GameManager.Instance.items[(int)itemData.itemType];
-
-        button = GetComponent<Button>();
-        button.onClick.AddListener(() => OnPut());
     }
 
-    private void OnPut()
+    public void OnPut()
     {
         if (itemData.itemType == ItemType.Count) return;
         if (itemData.itemType == ItemType.BrokenKey && GameManager.Instance.UIManager.CheckIsInInventory(itemData.itemType))

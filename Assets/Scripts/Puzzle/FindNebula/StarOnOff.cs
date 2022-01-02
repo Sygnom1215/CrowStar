@@ -4,18 +4,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject star = null;
     [SerializeField] private MousePointerMove pointer = null;
     Image image;
     private bool starOnOff = false;
-
+    private ItemObject itemObject;
     private int click = 0;
+
+    public bool isFind { get; private set; }
 
     private void Start()
     {
         image = GetComponent<Image>();
+        itemObject = GetComponent<ItemObject>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -27,6 +30,7 @@ public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             Color color = image.color;
             color.a = 1f;
+            isFind = true;
             image.color = color;
         }
     }
@@ -43,6 +47,8 @@ public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void Click()
     {
+        if (!isFind) return;
+
         click++;
 
         if(click >= 1)
@@ -56,5 +62,13 @@ public class StarOnOff : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 image.color = color;
             }
         }
+
+        GameManager.Instance.DialogueManager.Action(gameObject);
+        itemObject.OnPut();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Click();
     }
 }
