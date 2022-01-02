@@ -10,12 +10,19 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Text dialogueText = null;
     [SerializeField] private DialogueSet dialogueSet = null;
 
+    private DialogueManager dialogueManager = null;
+
     private GameObject scanObject = null;
     private int dialogueIndex = 0;
     private string dialogueData = null;
     private bool isAction = false;
-    private bool isTypingCheck = false;
-    private bool isSkipCheck = false;
+    public bool isTypingCheck = false;
+    public bool isSkipCheck = false;
+
+    private void Start()
+    {
+        dialogueManager = FindObjectOfType<DialogueManager>();
+    }
 
     public void Action(GameObject scanObj)
     {
@@ -30,6 +37,7 @@ public class DialogueManager : MonoBehaviour
     private void SetDialogue(int id)
     {
         string dialogueData = dialogueSet.GetDialogue(id, dialogueIndex);
+        Debug.Log(id);
 
         if (dialogueData == null)
         {
@@ -38,7 +46,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(Typing(dialogueData));
+        StartCoroutine(Typing(dialogueData, dialogueText));
 
         dialogueIndex++;
     }
@@ -61,15 +69,16 @@ public class DialogueManager : MonoBehaviour
             isSkipCheck = true;
     }
 
-    public IEnumerator Typing(string targetText)
+    public IEnumerator Typing(string targetText, Text dialogueText)
     {
+        Debug.Log("≈∏¿Ã«Œ");
         dialogueText.text = "";
         for (int i = 0; i <= targetText.Length; i++)
         {
             isTypingCheck = true;
             dialogueText.text = targetText.Substring(0, i);
             yield return new WaitForSeconds(.05f);
-            if (isSkipCheck)
+            if (dialogueManager.isSkipCheck)
             {
                 dialogueText.text = targetText;
                 isTypingCheck = false;

@@ -10,10 +10,14 @@ public class DialogDisplay : MonoBehaviour
     public GameObject talkerLeft;
     public GameObject talkerRight;
 
+    public GameObject talkerObserver;
+
     public TalkUI talkerUILeft;
     public TalkUI talkerUIRight;
 
-    public GameObject endSceneImage;
+    public TalkUI talkerUIObserver;
+
+    //public GameObject endSceneImage;
 
     private int activeLineIndex = 0;
 
@@ -22,8 +26,14 @@ public class DialogDisplay : MonoBehaviour
         talkerUILeft = talkerLeft.GetComponent<TalkUI>();
         talkerUIRight = talkerRight.GetComponent<TalkUI>();
 
-        talkerUILeft.Talker = conversation.talkerLeft;
-        talkerUIRight.Talker = conversation.talkerRight;
+        talkerUIObserver = talkerObserver.GetComponent<TalkUI>();
+
+        //talkerUILeft.Talker = conversation.talkerLeft;
+        //talkerUIRight.Talker = conversation.talkerRight;
+
+        //talkerUIObserver.Talker = conversation.talkerObserver;
+
+        AdvanceConversation();
     }
     private void Update()
     {
@@ -43,8 +53,9 @@ public class DialogDisplay : MonoBehaviour
         {
             talkerUILeft.Hide();
             talkerUIRight.Hide();
+            talkerUIObserver.Hide();
             activeLineIndex = 0;
-            endSceneImage.transform.DOMove(new Vector3(0, 0), 1);
+            //endSceneImage.transform.DOMove(new Vector3(0, 0), 1);
         }
     }
     void DisplayLine()
@@ -56,9 +67,13 @@ public class DialogDisplay : MonoBehaviour
         {
             SetDialog(talkerUILeft, talkerUIRight, line.text);
         }
-        else
+        else if(talkerUIRight.TalkerIs(character))
         {
             SetDialog(talkerUIRight, talkerUILeft, line.text);
+        }
+        else
+        {
+            SetDialog(talkerUIObserver, talkerUIRight, line.text);
         }
     }
     void SetDialog(TalkUI activeTalkerUI, TalkUI inactiveTalkerUI, string text)
@@ -66,7 +81,5 @@ public class DialogDisplay : MonoBehaviour
         inactiveTalkerUI.Hide();
         activeTalkerUI.Dialog = text;
         activeTalkerUI.Show();
-        //activeTalkerUI.TextSmooth();
-        // DOText전에 text비우기
     }
 }

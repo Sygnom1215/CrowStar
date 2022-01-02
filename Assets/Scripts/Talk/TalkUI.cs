@@ -6,6 +6,7 @@ public class TalkUI : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
     public Image characterImage;
+    public Image nameWindowImage;
     public Text nameText;
     public Text dialog;
 
@@ -42,7 +43,6 @@ public class TalkUI : MonoBehaviour
     }
     public void TextSmooth()
     {
-        
-        //dialog.DOText(dialog.text, 2);
+        dialog.DOText(dialog.text, 2);
     }
 }
