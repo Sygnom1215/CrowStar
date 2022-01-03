@@ -8,6 +8,7 @@ public class Lamp : ObjectBase
     private bool isLight;
     private List<ItemType> itemTypes = new List<ItemType>() { ItemType.OilBottle, ItemType.Matches };
     [SerializeField] Sprite[] sprites;
+    [SerializeField] GameObject lightGlow;
     Image image;
 
     private void Start()
@@ -35,6 +36,7 @@ public class Lamp : ObjectBase
             else if (isFirstIn && item.itemType == ItemType.Matches)
             {
                 OnUseItem(1);
+                lightGlow.SetActive(true);
                 isLight = true;
             }
 

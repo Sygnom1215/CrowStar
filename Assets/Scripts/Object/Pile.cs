@@ -6,6 +6,8 @@ public class Pile : ObjectBase
 {
     [SerializeField] Boat boat;
     [SerializeField] Lamp lamp;
+    [SerializeField] GameObject zoomBoat;
+    BoatMoving boatMoving;
 
     public override void OnMouseClick()
     {
@@ -16,7 +18,8 @@ public class Pile : ObjectBase
     {
         if (boat.CheckIsInBoat() && lamp.GetIsLight())
         {
-            Debug.Log("³¡!!");
+            zoomBoat.SetActive(false);
+            FindObjectOfType<BoatMoving>().Move();
         }
     }
 }
