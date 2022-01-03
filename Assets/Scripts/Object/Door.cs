@@ -2,11 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class Door : ObjectBase, IPointerUpHandler
 {
     [SerializeField] Sprite[] sprites;
-    [SerializeField]  Image image;
+    [SerializeField] Image image;
+    [SerializeField] Image lockObject;
 
     public override void OnClick()
     {
@@ -17,6 +19,8 @@ public class Door : ObjectBase, IPointerUpHandler
 
         else
         {
+            lockObject.transform.DOMoveY(-10f, 1f);
+            Destroy(lockObject, 1f);
             RemoveItem();
             StartCoroutine(NextStage());
         }
