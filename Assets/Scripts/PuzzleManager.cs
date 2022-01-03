@@ -14,7 +14,7 @@ public class PuzzleManager : MonoBehaviour
     {
         StartTrashPuzzle(trashObject, 35);
         StartTrashPuzzle(rockObject, 50);
-        StartTrashPuzzle(leafObject, 30,4.5f,2f);
+        StartTrashPuzzle(leafObject, 40, 4.5f, 2.3f);
     }
 
     public void StartTrashPuzzle(GameObject template, int count, float x = 9f, float y = 4f)

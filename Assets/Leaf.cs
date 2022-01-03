@@ -5,6 +5,13 @@ using DG.Tweening;
 public class Leaf : MonoBehaviour
 {
     private bool isDestroying;
+    [SerializeField] private Color32[] colors;
+
+    private void Start()
+    {
+        GetComponent<SpriteRenderer>().color = colors[Random.Range(0, colors.Length)];
+    }
+
     private void OnMouseEnter()
     {
         if (isDestroying) return;
