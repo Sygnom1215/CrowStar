@@ -19,7 +19,6 @@ public class ItemObject : MonoBehaviour
         if (itemData.itemType == ItemType.BrokenKey && GameManager.Instance.UIManager.CheckIsInInventory(itemData.itemType))
         {
             GameManager.Instance.UIManager.RemoveItem(itemData.itemType);
-            Debug.Log(itemData.itemType);
             GameManager.Instance.UIManager.AddInventory(GameManager.Instance.items[(int)ItemType.Key]);
         }
 
@@ -30,6 +29,12 @@ public class ItemObject : MonoBehaviour
                 DestroyObject();
         }
     }
+
+    public void SaveClears(int id)
+    {
+        DataManager.Instance.SaveClears(id);
+    }
+
     public void DestroyObject()
     {
         if (itemData.itemType == ItemType.Count) return;

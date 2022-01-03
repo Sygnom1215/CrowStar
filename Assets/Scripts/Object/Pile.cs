@@ -18,6 +18,7 @@ public class Pile : ObjectBase
     {
         if (boat.CheckIsInBoat() && lamp.GetIsLight())
         {
+            DataManager.Instance.SaveClears(12);
             zoomBoat.SetActive(false);
             FindObjectOfType<BoatMoving>().Move();
         }

@@ -29,6 +29,7 @@ public class Tree : MonoBehaviour
         {
             GameManager.Instance.AddInventory(GameManager.Instance.items.Find(x => x.itemType == ItemType.Branch));
             isGetItem = true;
+            DataManager.Instance.SaveClears(7);
         }
     }
 }

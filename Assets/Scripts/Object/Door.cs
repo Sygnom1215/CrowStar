@@ -6,20 +6,11 @@ using DG.Tweening;
 
 public class Door : ObjectBase, IPointerUpHandler
 {
-<<<<<<< HEAD
-    [SerializeField] Sprite[] sprites;
-    [SerializeField] Image image;
-    [SerializeField] Image lockObject;
-=======
+    [SerializeField] private Image lockObject;
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private Image image;
     private bool isOpen;
 
-    public void Start()
-    {
-        
-    }
->>>>>>> OIF
 
     public override void OnClick()
     {
@@ -32,13 +23,10 @@ public class Door : ObjectBase, IPointerUpHandler
 
         else
         {
-<<<<<<< HEAD
-            lockObject.transform.DOMoveY(-10f, 1f);
-            Destroy(lockObject, 1f);
-=======
             isOpen = true;
             DataManager.Instance.SaveClears(0);
->>>>>>> OIF
+            lockObject.transform.DOMoveY(-10f, 1f);
+            Destroy(lockObject, 1f);
             RemoveItem();
             StartCoroutine(NextStage());
         }

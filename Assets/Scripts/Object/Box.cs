@@ -36,5 +36,6 @@ public class Box : ObjectBase, IPointerUpHandler
         GameManager.Instance.UIManager.HideStageButton();
         GameManager.Instance.PuzzleManager.AddPuzzleScene(inBoxObj);
         inBoxObj.SetActive(true);
+        DataManager.Instance.SaveClears(5);
     }
 }

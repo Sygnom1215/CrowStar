@@ -21,10 +21,12 @@ public class Boat : ObjectBase
             if(GameManager.Instance.GetCurItem().itemType == ItemType.Compass)
             {
                 compass.SetActive(true);
+                DataManager.Instance.SaveClears(11);
             }
             else if(GameManager.Instance.GetCurItem().itemType == ItemType.Paddle)
             {
                 GetComponent<Image>().sprite = paddleBoat;
+                DataManager.Instance.SaveClears(10);
             }
             cnt++;
             base.RemoveItem();

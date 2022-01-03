@@ -30,12 +30,14 @@ public class Lamp : ObjectBase
             if (!isFirstIn && item.itemType == ItemType.OilBottle)
             {
                 isFirstIn = true;
+                DataManager.Instance.SaveClears(8);
                 OnUseItem(0);
             }
 
             else if (isFirstIn && item.itemType == ItemType.Matches)
             {
                 OnUseItem(1);
+                DataManager.Instance.SaveClears(9);
                 lightGlow.SetActive(true);
                 isLight = true;
             }
