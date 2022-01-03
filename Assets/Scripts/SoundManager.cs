@@ -4,17 +4,58 @@ using UnityEngine;
 
 public class SoundManager : MonoSingleton<SoundManager>
 {
+    private AudioClip[] effectSounds = null;
+    private AudioClip[] bgms = null;
     private AudioSource bgmAudio;
     private AudioSource soundEffectAudio;
 
     private void Awake()
     {
+        SoundManager[] smanagers = FindObjectsOfType<SoundManager>();
+        if (smanagers.Length != 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(this);
-    }
 
-    private void Start()
-    {
         bgmAudio = GetComponent<AudioSource>();
         soundEffectAudio = transform.GetChild(0).GetComponent<AudioSource>();
+
+        bgms = Resources.LoadAll<AudioClip>("Audios/BGMs");
+        effectSounds = Resources.LoadAll<AudioClip>("Audios/Effects");
+    }
+
+    public void BGMVolume(float value)
+    {
+        if (bgmAudio == null) return;
+        bgmAudio.volume = value;
+
+        DataManager.Instance.CurrentPlayer.bgmSoundVolume = value;
+    }
+
+    public void EffectVolume(float value)
+    {
+        if (soundEffectAudio == null) return;
+        soundEffectAudio.volume = value;
+
+        DataManager.Instance.CurrentPlayer.effectSoundVolume = value;
+    }
+    public void SetBGM(int bgmNum)
+    {
+        bgmAudio.Stop();
+        bgmAudio.clip = bgms[bgmNum];
+        bgmAudio.Play();
+    }
+    public void SetEffectSound(int effectNum)
+    {
+        soundEffectAudio.Stop();
+
+        soundEffectAudio.clip = effectSounds[effectNum];
+        soundEffectAudio.Play();
+    }
+    public void StopBGM()
+    {
+        bgmAudio.Stop();
     }
 }

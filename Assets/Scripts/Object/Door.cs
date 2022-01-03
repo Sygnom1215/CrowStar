@@ -5,11 +5,19 @@ using UnityEngine.EventSystems;
 
 public class Door : ObjectBase, IPointerUpHandler
 {
-    [SerializeField] Sprite[] sprites;
-    [SerializeField]  Image image;
+    [SerializeField] private Sprite[] sprites;
+    [SerializeField] private Image image;
+    private bool isOpen;
+
+    public void Start()
+    {
+        
+    }
 
     public override void OnClick()
     {
+        if (isOpen) return;
+
         if (GameManager.Instance.GetCurItem() == null || !CheckIsCorrect(GameManager.Instance.GetItemType()))
         {
             GameManager.Instance.DialogueManager.Action(gameObject);
@@ -17,6 +25,8 @@ public class Door : ObjectBase, IPointerUpHandler
 
         else
         {
+            isOpen = true;
+            DataManager.Instance.SaveClears(0);
             RemoveItem();
             StartCoroutine(NextStage());
         }
