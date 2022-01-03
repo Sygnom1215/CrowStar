@@ -7,6 +7,9 @@ public class BoatMoving : MonoBehaviour
 {
     [SerializeField] private float second;
     [SerializeField] private Image aurora;
+    [SerializeField] private Text auroraText;
+    [SerializeField] private GameObject ui;
+
     public void Move()
     {
         StartCoroutine(MoveBoat());
@@ -16,11 +19,14 @@ public class BoatMoving : MonoBehaviour
     {
         transform.DOMove(Vector2.zero, second);
         transform.DOScale(Vector2.zero, second);
-        GameManager.Instance.UIManager.SetActiveButton();
-        GameManager.Instance.UIManager.HideOrAppearInventory();
+        ui.SetActive(false);
 
-        yield return new WaitForSeconds(second + 1);
+        yield return new WaitForSeconds(second / 2);
+        GetComponent<Image>().DOFade(0f, 1f);
+        yield return new WaitForSeconds(second / 2 + 1);
 
-        aurora.DOFade(1f, 1f);
+        aurora.DOFade(1f, 3f);
+        yield return new WaitForSeconds(second / 4f);
+        auroraText.DOFade(1f, 1f);
     }
 }

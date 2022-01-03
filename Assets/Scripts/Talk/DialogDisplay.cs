@@ -58,6 +58,7 @@ public class DialogDisplay : MonoBehaviour
         {
             talkerUIOther.Hide();
             activeLineIndex = 0;
+            SceneManager.LoadScene(ConstantManager.MAIN_SCENE);
         }
     }
 
