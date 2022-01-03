@@ -82,9 +82,6 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: ae29d00c34030984d8400af9e3fd6f6d, type: 2}
     text: "\uC790 \uADF8\uB7FC \uC9C4\uC9DC \uCD95\uC81C\uB97C \uC2DC\uC791\uD558\uAE30
       \uC704\uD574 \uC5EC\uB7EC\uAC00\uC9C0 \uC774\uBCA4\uD2B8\uB97C \uC900\uBE44\uD588\uC2B5\uB2C8\uB2E4!"
-  - character: {fileID: 11400000, guid: ae29d00c34030984d8400af9e3fd6f6d, type: 2}
-    text: "\uC790 \uADF8\uB7FC \uC9C4\uC9DC \uCD95\uC81C\uB97C \uC2DC\uC791\uD558\uAE30
-      \uC704\uD574 \uC5EC\uB7EC\uAC00\uC9C0 \uC774\uBCA4\uD2B8\uB97C \uC900\uBE44\uD588\uC2B5\uB2C8\uB2E4!"
   - character: {fileID: 11400000, guid: 0470a758e9efa32468ed7d56cc82aae6, type: 2}
     text: "\uC800\uAE30"
   - character: {fileID: 11400000, guid: 8356f2cb8c98ffd45a185c998b4e241a, type: 2}

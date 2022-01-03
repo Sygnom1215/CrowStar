@@ -6,35 +6,24 @@ using DG.Tweening;
 public class DialogDisplay : MonoBehaviour
 {
     public Conversation conversation = null;
+    public GameObject talkerOther;
+    public TalkUI talkerUIOther;
 
-    public GameObject talkerLeft;
-    public GameObject talkerRight;
-
-    public GameObject talkerObserver;
-
-    public TalkUI talkerUILeft;
-    public TalkUI talkerUIRight;
-
-    public TalkUI talkerUIObserver;
-
-    //public GameObject endSceneImage;
-
+    private DialogueManager dialogueManager = null;
     private int activeLineIndex = 0;
+
+    private void Awake()
+    {
+        talkerUIOther = talkerOther.GetComponent<TalkUI>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
+        conversation = Resources.Load<Conversation>("TalkData/Conversation/StartConversation");
+    }
 
     private void Start()
     {
-        talkerUILeft = talkerLeft.GetComponent<TalkUI>();
-        talkerUIRight = talkerRight.GetComponent<TalkUI>();
-
-        talkerUIObserver = talkerObserver.GetComponent<TalkUI>();
-
-        //talkerUILeft.Talker = conversation.talkerLeft;
-        //talkerUIRight.Talker = conversation.talkerRight;
-
-        //talkerUIObserver.Talker = conversation.talkerObserver;
-
         AdvanceConversation();
     }
+
     private void Update()
     {
         if (Input.GetKeyDown("space"))
@@ -42,8 +31,24 @@ public class DialogDisplay : MonoBehaviour
             AdvanceConversation();
         }
     }
-    void AdvanceConversation()
+
+    public void ChooseConversation(string conversationData)
     {
+        switch (conversationData)
+        {
+            case "Start":
+                conversation = Resources.Load<Conversation>("TalkData/Conversation/StartConversation");
+                break;
+            default:
+                break;
+        }
+        AdvanceConversation();
+    }
+
+    private void AdvanceConversation()
+    {
+        dialogueManager.SkipCheck();
+        if (dialogueManager.isTypingCheck || dialogueManager.isSkipCheck) return;
         if (activeLineIndex < conversation.lines.Length)
         {
             DisplayLine();
@@ -51,35 +56,39 @@ public class DialogDisplay : MonoBehaviour
         }
         else
         {
-            talkerUILeft.Hide();
-            talkerUIRight.Hide();
-            talkerUIObserver.Hide();
+            talkerUIOther.Hide();
             activeLineIndex = 0;
-            //endSceneImage.transform.DOMove(new Vector3(0, 0), 1);
         }
     }
-    void DisplayLine()
+
+    private void DisplayLine()
     {
         Line line = conversation.lines[activeLineIndex];
         Character character = line.character;
+        Sprite characterImage = line.character.characterImage;
+        string characterName = line.character.name;
 
-        if (talkerUILeft.TalkerIs(character))
+        SetDialog(talkerUIOther, talkerUIOther, line.text, characterImage, characterName);
+    }
+
+    private void SetDialog(TalkUI activeTalkerUI, TalkUI inactiveTalkerUI, string text, Sprite image, string name)
+    {
+        Text dialogueText = activeTalkerUI.dialog;
+        inactiveTalkerUI.Hide();
+        activeTalkerUI.nameText.text = name;
+        activeTalkerUI.characterImage.sprite = image;
+        if (activeTalkerUI.characterImage.sprite == null)
         {
-            SetDialog(talkerUILeft, talkerUIRight, line.text);
-        }
-        else if(talkerUIRight.TalkerIs(character))
-        {
-            SetDialog(talkerUIRight, talkerUILeft, line.text);
+            activeTalkerUI.characterImage.DOFade(0, 0);
+            activeTalkerUI.nameWindowImage.DOFade(0, 0);
         }
         else
         {
-            SetDialog(talkerUIObserver, talkerUIRight, line.text);
+            activeTalkerUI.characterImage.DOFade(1, 0);
+            activeTalkerUI.nameWindowImage.DOFade(1, 0);
         }
-    }
-    void SetDialog(TalkUI activeTalkerUI, TalkUI inactiveTalkerUI, string text)
-    {
-        inactiveTalkerUI.Hide();
         activeTalkerUI.Dialog = text;
         activeTalkerUI.Show();
+        StartCoroutine(dialogueManager.Typing(text, dialogueText));
     }
 }
