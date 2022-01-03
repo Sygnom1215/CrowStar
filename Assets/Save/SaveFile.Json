@@ -1,0 +1,32 @@
+﻿{
+    "effectSoundVolume": 0.5,
+    "bgmSoundVolume": 0.5,
+    "items": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "clearPuzzle": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+    ]
+}

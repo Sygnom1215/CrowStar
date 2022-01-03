@@ -1849,7 +1849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &261202327
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10115,6 +10115,7 @@ GameObject:
   - component: {fileID: 1124098479}
   - component: {fileID: 1124098480}
   - component: {fileID: 1124098481}
+  - component: {fileID: 1124098482}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -10227,6 +10228,24 @@ MonoBehaviour:
     sceneNumber: 1
     scene: {fileID: 821305535}
   curPuzzles: []
+--- !u!114 &1124098482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124098477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa69dd0621c47847aeb5fbd6d958343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultSound: 0.5
+  player:
+    effectSoundVolume: 0
+    bgmSoundVolume: 0
+    items: 
+    clearPuzzle: 
 --- !u!1 &1162490763
 GameObject:
   m_ObjectHideFlags: 0
@@ -36810,11 +36829,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
+  lockObject: {fileID: 202368756}
   sprites:
   - {fileID: -414287650133992770, guid: 41878fcf5d7d9b84e87d5a3e2414da30, type: 3}
   - {fileID: 7952510826063097670, guid: 2c6d309a2d0d37a49836de2b4d2612fe, type: 3}
   image: {fileID: 780057004}
-  lockObject: {fileID: 202368756}
 --- !u!114 &1742526388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37259,16 +37278,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812943196}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.12410805, w: 0.99226874}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2066585333}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.259}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237, y: -29}
+  m_AnchoredPosition: {x: 125, y: -29}
   m_SizeDelta: {x: 360.45, y: 422.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1812943198
@@ -43438,14 +43457,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6415094, g: 0.43634292, b: 0.22029188, a: 1}
+  m_Color: {r: 1, g: 0.85833335, b: 0.71132076, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1f8656a45dc875e4f942882bb88bb4ee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
