@@ -6,12 +6,25 @@ using DG.Tweening;
 
 public class Door : ObjectBase, IPointerUpHandler
 {
+<<<<<<< HEAD
     [SerializeField] Sprite[] sprites;
     [SerializeField] Image image;
     [SerializeField] Image lockObject;
+=======
+    [SerializeField] private Sprite[] sprites;
+    [SerializeField] private Image image;
+    private bool isOpen;
+
+    public void Start()
+    {
+        
+    }
+>>>>>>> OIF
 
     public override void OnClick()
     {
+        if (isOpen) return;
+
         if (GameManager.Instance.GetCurItem() == null || !CheckIsCorrect(GameManager.Instance.GetItemType()))
         {
             GameManager.Instance.DialogueManager.Action(gameObject);
@@ -19,8 +32,13 @@ public class Door : ObjectBase, IPointerUpHandler
 
         else
         {
+<<<<<<< HEAD
             lockObject.transform.DOMoveY(-10f, 1f);
             Destroy(lockObject, 1f);
+=======
+            isOpen = true;
+            DataManager.Instance.SaveClears(0);
+>>>>>>> OIF
             RemoveItem();
             StartCoroutine(NextStage());
         }
