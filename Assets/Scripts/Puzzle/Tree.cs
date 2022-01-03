@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour
 {
-    private bool isCollide = true;
     private bool isGetItem;
     Collider2D col;
 
@@ -26,20 +25,10 @@ public class Tree : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!isCollide && !isGetItem)
+        if (transform.childCount == 0 && !isGetItem)
         {
             GameManager.Instance.AddInventory(GameManager.Instance.items.Find(x => x.itemType == ItemType.Branch));
             isGetItem = true;
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        isCollide = false;
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        isCollide = true;
     }
 }

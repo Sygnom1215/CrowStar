@@ -34,11 +34,11 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.LeftArrow))
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             PreviousBackgroundButton();
         }
-        if(Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.RightArrow))
         {
             NextBackgroundButton();
         }
@@ -114,6 +114,13 @@ public class UIManager : MonoBehaviour
 
     public void SetActiveButton()
     {
+        if (GameManager.Instance.PuzzleManager.curPuzzles.Count > 1)
+        {
+            nextButton.gameObject.SetActive(false);
+            previousButton.gameObject.SetActive(false);
+            return;
+        }
+
         int stageNum = GameManager.Instance.GetCurrentStage();
 
         nextButton.gameObject.SetActive(!(sceneIndex >= backgroundsList[stageNum].GetCount() - 1));
@@ -122,7 +129,7 @@ public class UIManager : MonoBehaviour
 
     public void SetActiveChapter()
     {
-        for(int i = 0; i<chapterObjects.Count; i++)
+        for (int i = 0; i < chapterObjects.Count; i++)
         {
             chapterObjects[i].SetActive(i == GameManager.Instance.GetCurrentStage());
         }
@@ -142,7 +149,7 @@ public class UIManager : MonoBehaviour
 
     public bool CheckIsInInventory(ItemType itemType)
     {
-        for(int i = 0; i<inventoryPanels.Count;i++)
+        for (int i = 0; i < inventoryPanels.Count; i++)
         {
             if (inventoryPanels[i].GetIsEmpty()) continue;
 

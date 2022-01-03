@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7519961310885100472, guid: f69ffe73dcf566e4192bc88602e95f13, type: 3}
+  m_Sprite: {fileID: -6639933984177205412, guid: f69ffe73dcf566e4192bc88602e95f13, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -121,31 +121,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6333751908720938585}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4791169797747981331}
-        m_TargetAssemblyTypeName: StarOnOff, Assembly-CSharp
-        m_MethodName: Click
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: Action
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 3990345881500659733}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &4791169797747981331
 MonoBehaviour:
   m_ObjectHideFlags: 0
