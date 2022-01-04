@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject quitPanel;
 
+    private RectTransform zoomOutButtonRect;
     private RectTransform inventoryBar;
     private int sceneIndex = 0;
 
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
         nextButton.onClick.AddListener(() => NextBackgroundButton());
         previousButton.onClick.AddListener(() => PreviousBackgroundButton());
         inventoryBar = inventoryPanel.transform.parent.parent.GetComponent<RectTransform>();
+        zoomOutButtonRect = zoomOutButton.transform.GetComponent<RectTransform>();
         SetActiveButton();
     }
 
@@ -193,6 +195,8 @@ public class UIManager : MonoBehaviour
     public void HideOrAppearInventory()
     {
         inventoryBar.DOAnchorPosY(-inventoryBar.anchoredPosition.y, 0.5f);
+        zoomOutButtonRect.DOAnchorPosY((-zoomOutButtonRect.anchoredPosition.y+235f), 0.5f);
+        
     }
 
     public void HideStageButton()
