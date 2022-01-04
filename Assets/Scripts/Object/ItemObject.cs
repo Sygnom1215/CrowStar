@@ -10,6 +10,20 @@ public class ItemObject : MonoBehaviour
     {
         if (itemData.itemType != ItemType.Count)
             item = GameManager.Instance.items[(int)itemData.itemType];
+
+        CheckClearObject();
+    }
+
+    public void CheckClearObject()
+    {
+        int saveId = GameManager.Instance.ConversionItemId(itemData.id);
+
+        if (saveId == -1) return;
+
+        if(DataManager.Instance.CheckClear(saveId))
+        {
+            DestroyObject();
+        }    
     }
 
     public void OnPut()
@@ -25,7 +39,7 @@ public class ItemObject : MonoBehaviour
         else
         {
             GameManager.Instance.AddInventory(item);
-            if (itemData.id == 0)
+            if (itemData.id == 0 || itemData.id == 61)
                 DestroyObject();
         }
     }
@@ -38,7 +52,6 @@ public class ItemObject : MonoBehaviour
     public void DestroyObject()
     {
         if (itemData.itemType == ItemType.Count) return;
-
         Destroy(gameObject);
     }
 }

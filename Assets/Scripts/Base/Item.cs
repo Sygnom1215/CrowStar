@@ -3,6 +3,11 @@ using UnityEngine;
 public class Item
 {
     public string name;
-    public Sprite sprite;
     public ItemType itemType;
+
+    public Item()
+    {
+        name = "";
+        itemType = ItemType.None;
+    }
 }

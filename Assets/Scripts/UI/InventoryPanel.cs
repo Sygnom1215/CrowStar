@@ -32,8 +32,9 @@ public class InventoryPanel : MonoBehaviour, IPointerUpHandler
 
         this.item = item;
         Settings();
-        itemImage.sprite = item.sprite;
+        itemImage.sprite = GameManager.Instance.itemSprites[(int)item.itemType];
         itemImage.color = Color.white;
+        DataManager.Instance.SetInventoryItem(index, item);
 
         IsEmpty = false;
     }
@@ -41,6 +42,7 @@ public class InventoryPanel : MonoBehaviour, IPointerUpHandler
     public void Remove()
     {
         item = null;
+        DataManager.Instance.SetInventoryItem(index, null);
         itemImage.color = Color.clear;
         IsEmpty = true;
     }

@@ -9,6 +9,21 @@ public class Boat : ObjectBase
     List<ItemType> itemTypes = new List<ItemType>() { ItemType.Paddle, ItemType.Compass };
     int cnt = 0;
 
+    private void Start()
+    {
+        if(DataManager.Instance.CheckClear(11))
+        {
+            compass.SetActive(true);
+            cnt++;
+        }
+
+        if(DataManager.Instance.CheckClear(10))
+        {
+            GetComponent<Image>().sprite = paddleBoat;
+            cnt++;
+        }
+    }
+
     public override void OnMouseClick()
     {
         base.OnMouseClick();

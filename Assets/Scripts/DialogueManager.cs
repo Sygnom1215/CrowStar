@@ -37,7 +37,6 @@ public class DialogueManager : MonoBehaviour
     private void SetDialogue(int id)
     {
         string dialogueData = dialogueSet.GetDialogue(id, dialogueIndex);
-        Debug.Log(id);
 
         if (dialogueData == null)
         {
@@ -71,7 +70,6 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator Typing(string targetText, Text dialogueText)
     {
-        Debug.Log("≈∏¿Ã«Œ");
         dialogueText.text = "";
         for (int i = 0; i <= targetText.Length; i++)
         {

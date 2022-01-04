@@ -11,7 +11,13 @@ public class Door : ObjectBase, IPointerUpHandler
     [SerializeField] private Image image;
     private bool isOpen;
 
-
+    private void Start()
+    {
+        if (DataManager.Instance.CheckClear(0))
+        {
+            GameManager.Instance.SetCurrentStage(GameManager.Instance.GetCurrentStage() + 1);
+        }
+    }
     public override void OnClick()
     {
         if (isOpen) return;

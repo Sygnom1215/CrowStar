@@ -14,6 +14,19 @@ public class Lamp : ObjectBase
     private void Start()
     {
         image = GetComponent<Image>();
+        isFirstIn = DataManager.Instance.CheckClear(8);
+        isLight = DataManager.Instance.CheckClear(9);
+
+        if(isFirstIn && !isLight)
+        {
+            image.sprite = sprites[0];
+        }
+
+        else if(isFirstIn && isLight)
+        {
+            image.sprite = sprites[1];
+            lightGlow.SetActive(true);
+        }
     }
 
     public override void OnMouseClick()

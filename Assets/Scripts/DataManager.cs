@@ -67,6 +67,18 @@ public class DataManager : MonoSingleton<DataManager>
         return player.clearPuzzle[index];
     }
 
+    public Item GetIventoryItem(int index)
+    {
+        return player.items[index];
+    }
+
+    public void SetInventoryItem(int index, Item item)
+    {
+        player.items[index] = item;
+        SaveToJson();
+    }
+
+
     private void OnApplicationQuit()
     {
         SaveToJson();

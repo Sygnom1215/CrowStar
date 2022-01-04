@@ -5,6 +5,7 @@ using DG.Tweening;
 public class GameManager : MonoSingleton<GameManager>
 {
     public List<Item> items = new List<Item>();
+    public List<Sprite> itemSprites = new List<Sprite>();
     public List<Item> userItems { get; private set; } = new List<Item>();
     public UIManager UIManager { get; private set; }
     public PuzzleManager PuzzleManager { get; private set; }
@@ -24,6 +25,35 @@ public class GameManager : MonoSingleton<GameManager>
         PuzzleManager = GetComponent<PuzzleManager>();
         DialogueManager = FindObjectOfType<DialogueManager>();
     }
+
+    private void Start()
+    {
+    }
+
+    public int ConversionItemId(int itemId)
+    {
+        switch(itemId)
+        {
+            case 10:
+                return 2;
+
+            case 20:
+                return 1;
+
+            case 40:
+                return 4;
+
+            case 50:
+                return 3;
+
+            case 61:
+                return 6;
+        }
+
+        return -1;
+    }
+
+
 
     public void AddInventory(Item item)
     {

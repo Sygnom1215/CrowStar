@@ -5,6 +5,11 @@ public class Box : ObjectBase, IPointerUpHandler
 {
     private bool isOpen;
     [SerializeField] private GameObject inBoxObj;
+
+    private void Start()
+    {
+        isOpen = DataManager.Instance.CheckClear(5);
+    }
     public override void OnClick()
     {
         if(isOpen)

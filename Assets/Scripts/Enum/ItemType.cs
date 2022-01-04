@@ -9,5 +9,6 @@ public enum ItemType
     Bottle,
     OilBottle,
     Branch,
-    Count
+    Count,
+    None
 }

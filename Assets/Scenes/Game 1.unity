@@ -513,7 +513,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7b8248f9707a74a9edc88ab56e104c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors: []
+  colors:
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4288129023
+  - serializedVersion: 2
+    rgba: 4294964937
+  - serializedVersion: 2
+    rgba: 4289396665
 --- !u!50 &42539994
 Rigidbody2D:
   serializedVersion: 4
@@ -1623,6 +1631,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202368754}
   m_CullTransparentMesh: 1
+--- !u!1 &239615210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239615212}
+  - component: {fileID: 239615211}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &239615211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239615210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa69dd0621c47847aeb5fbd6d958343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultSound: 0.5
+  player:
+    effectSoundVolume: 0
+    bgmSoundVolume: 0
+    items: []
+    clearPuzzle: 
+--- !u!4 &239615212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239615210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &239979310
 GameObject:
   m_ObjectHideFlags: 0
@@ -4101,7 +4158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData:
     itemType: 6
-    id: 0
+    id: 61
 --- !u!114 &935534486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10178,32 +10235,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - name: "\uBD80\uC11C\uC9C4 \uC5F4\uC1E0 \uC870\uAC01"
-    sprite: {fileID: 7519961310885100472, guid: f69ffe73dcf566e4192bc88602e95f13, type: 3}
     itemType: 0
   - name: "\uC5F4\uC1E0"
-    sprite: {fileID: -3153379843010914682, guid: f69ffe73dcf566e4192bc88602e95f13, type: 3}
     itemType: 1
   - name: "\uB098\uCE68\uBC18"
-    sprite: {fileID: 21300000, guid: 9d40c6e86c8da564795322ac617c8c7b, type: 3}
     itemType: 2
   - name: "\uB4F1\uBD88"
-    sprite: {fileID: -6639933984177205412, guid: f69ffe73dcf566e4192bc88602e95f13, type: 3}
     itemType: 3
   - name: "\uB178"
-    sprite: {fileID: 21300000, guid: 385fe8748a4cd2642979b9964a4a6f27, type: 3}
     itemType: 4
   - name: "\uC131\uB0E5\uAC11"
-    sprite: {fileID: -400463313352050284, guid: 535a197888eff0e4c9b7dfa5357367ab, type: 3}
     itemType: 5
   - name: "\uBE48 \uBCD1"
-    sprite: {fileID: 7356947230339043154, guid: 1d48e48ff4aae6e4c81ae61f302a1236, type: 3}
     itemType: 6
   - name: "\uAE30\uB984 \uBCD1"
-    sprite: {fileID: -3851927789335150862, guid: 1d48e48ff4aae6e4c81ae61f302a1236, type: 3}
     itemType: 7
   - name: "\uB098\uBB47\uAC00\uC9C0"
-    sprite: {fileID: 21300000, guid: 8023c5918ffdb574cac9e07500846364, type: 3}
     itemType: 8
+  itemSprites:
+  - {fileID: 7519961310885100472, guid: f69ffe73dcf566e4192bc88602e95f13, type: 3}
+  - {fileID: -3153379843010914682, guid: f69ffe73dcf566e4192bc88602e95f13, type: 3}
+  - {fileID: 21300000, guid: 9d40c6e86c8da564795322ac617c8c7b, type: 3}
+  - {fileID: -6639933984177205412, guid: f69ffe73dcf566e4192bc88602e95f13, type: 3}
+  - {fileID: 21300000, guid: 385fe8748a4cd2642979b9964a4a6f27, type: 3}
+  - {fileID: -400463313352050284, guid: 535a197888eff0e4c9b7dfa5357367ab, type: 3}
+  - {fileID: 7356947230339043154, guid: 1d48e48ff4aae6e4c81ae61f302a1236, type: 3}
+  - {fileID: -3851927789335150862, guid: 1d48e48ff4aae6e4c81ae61f302a1236, type: 3}
+  - {fileID: 21300000, guid: 8023c5918ffdb574cac9e07500846364, type: 3}
   currentStage: 0
 --- !u!114 &1124098480
 MonoBehaviour:

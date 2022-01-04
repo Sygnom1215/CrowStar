@@ -7,14 +7,14 @@ public class Player
 {
     public float effectSoundVolume;
     public float bgmSoundVolume;
-    public ItemType[] items;
+    public Item[] items;
     public bool[] clearPuzzle;
 
     public Player(float soundVolume)
     {
         effectSoundVolume = soundVolume;
         bgmSoundVolume = soundVolume;
-        items = new ItemType[9];
+        items = new Item[9];
         clearPuzzle = new bool[15];
     }
 }

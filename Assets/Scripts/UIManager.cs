@@ -51,6 +51,7 @@ public class UIManager : MonoBehaviour
     }
     private void PanelMake()
     {
+        Item item = null;
         for (int i = 0; i < maxInventory; i++)
         {
             GameObject panel = Instantiate(inventoryPanel, inventoryPanel.transform.parent);
@@ -59,6 +60,13 @@ public class UIManager : MonoBehaviour
             InventoryPanel inventory = panel.GetComponent<InventoryPanel>();
             inventory.Init(i);
             inventoryPanels.Add(inventory);
+
+            item = DataManager.Instance.GetIventoryItem(i);
+
+            if (item.itemType != ItemType.None)
+            {
+                inventory.AddItem(item);
+            }
         }
 
         inventoryPanels[0].Settings();

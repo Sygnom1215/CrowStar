@@ -1,0 +1,59 @@
+﻿{
+    "effectSoundVolume": 0.5,
+    "bgmSoundVolume": 0.5,
+    "items": [
+        {
+            "name": "",
+            "itemType": 10
+        },
+        {
+            "name": "",
+            "itemType": 10
+        },
+        {
+            "name": "",
+            "itemType": 10
+        },
+        {
+            "name": "",
+            "itemType": 10
+        },
+        {
+            "name": "",
+            "itemType": 10
+        },
+        {
+            "name": "",
+            "itemType": 10
+        },
+        {
+            "name": "",
+            "itemType": 10
+        },
+        {
+            "name": "",
+            "itemType": 10
+        },
+        {
+            "name": "",
+            "itemType": 10
+        }
+    ],
+    "clearPuzzle": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false
+    ]
+}

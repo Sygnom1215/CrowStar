@@ -13,6 +13,11 @@ public class Tree : MonoBehaviour
         col.enabled = false;
     }
 
+    private void Start()
+    {
+        isGetItem = DataManager.Instance.CheckClear(7);
+    }
+
     private void OnEnable()
     {
         col.enabled = true;
@@ -23,13 +28,31 @@ public class Tree : MonoBehaviour
         col.enabled = false;
     }
 
+    private void Update()
+    {
+        if (transform.childCount == 0 && !col.enabled)
+        {
+            col.enabled = true;
+        }
+    }
+
+    private void OnMouseEnter()
+    {
+        if (!Input.GetMouseButton(0)) return;
+
+        if (transform.childCount != 0)
+        {
+            col.enabled = false;
+        }
+    }
+
     private void OnMouseUp()
     {
         if (transform.childCount == 0 && !isGetItem)
         {
             GameManager.Instance.AddInventory(GameManager.Instance.items.Find(x => x.itemType == ItemType.Branch));
             isGetItem = true;
-            DataManager.Instance.SaveClears(7);
+            DataManager.Instance.SaveClears(7); 
         }
     }
 }
