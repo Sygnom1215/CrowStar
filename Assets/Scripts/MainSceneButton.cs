@@ -34,6 +34,7 @@ public class MainSceneButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnClickPlay()
     {
+        Debug.Log(DataManager.Instance);
         if (DataManager.Instance.CurrentPlayer.watchedStory)
         {
             SceneManager.LoadScene(ConstantManager.MAIN_SCENE);

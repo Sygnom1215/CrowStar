@@ -21,7 +21,7 @@ public class DataManager : MonoSingleton<DataManager>
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this);
 
         SAVE_PATH = Application.dataPath + "/Save";
 
@@ -58,7 +58,9 @@ public class DataManager : MonoSingleton<DataManager>
 
     public void DataClear()
     {
-        player = new Player(defaultSound);
+        player.items = new Item[9];
+        player.clearPuzzle = new bool[13];
+        player.watchedStory = false;
         SaveToJson();
     }
 
