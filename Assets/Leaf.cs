@@ -20,4 +20,10 @@ public class Leaf : MonoBehaviour
         isDestroying = true;
         GetComponent<SpriteRenderer>().DOFade(0f, 0.5f).OnComplete(() => Destroy(gameObject));
     }
+    private void OnMouseUp()
+    {
+        if (isDestroying) return;
+        isDestroying = true;
+        GetComponent<SpriteRenderer>().DOFade(0f, 0.5f).OnComplete(() => Destroy(gameObject));
+    }
 }

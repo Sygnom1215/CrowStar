@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject letterPanel;
     [SerializeField] private GameObject letter;
 
+    [SerializeField] private GameObject quitPanel;
+
     private RectTransform inventoryBar;
     private int sceneIndex = 0;
 
@@ -43,6 +45,11 @@ public class UIManager : MonoBehaviour
         {
             NextBackgroundButton();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            quitPanel.SetActive(true);
+        }
+
     }
 
     #region INVENTORY
@@ -199,5 +206,15 @@ public class UIManager : MonoBehaviour
         letterText.text = message;
         letterPanel.SetActive(true);
         letter.SetActive(false);
+    }
+
+    public void OnClickContinue()
+    {
+        quitPanel.SetActive(false);
+    }
+
+    public void OnClickQuit()
+    {
+        Application.Quit();
     }
 }

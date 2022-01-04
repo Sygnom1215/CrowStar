@@ -30,7 +30,6 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
     }
-
     public int ConversionItemId(int itemId)
     {
         switch(itemId)

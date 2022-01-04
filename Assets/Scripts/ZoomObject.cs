@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ZoomObject : MonoBehaviour, IPointerUpHandler
+public class ZoomObject : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] GameObject puzzleField = null;
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         GameManager.Instance.UIManager.HideStageButton();
         GameManager.Instance.PuzzleManager.AddPuzzleScene(puzzleField);
