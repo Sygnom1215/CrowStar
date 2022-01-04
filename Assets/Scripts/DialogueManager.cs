@@ -44,7 +44,6 @@ public class DialogueManager : MonoBehaviour
             isAction = false;
             return;
         }
-
         StartCoroutine(Typing(dialogueData, dialogueText));
 
         dialogueIndex++;

@@ -26,7 +26,7 @@ public class DialogDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             AdvanceConversation();
         }
@@ -58,6 +58,7 @@ public class DialogDisplay : MonoBehaviour
         {
             talkerUIOther.Hide();
             activeLineIndex = 0;
+            DataManager.Instance.CurrentPlayer.watchedStory = true;
             SceneManager.LoadScene(ConstantManager.MAIN_SCENE);
         }
     }

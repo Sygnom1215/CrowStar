@@ -16,6 +16,8 @@ public class Pile : ObjectBase
 
     public override void OnClick()
     {
+        Debug.Log(boat.CheckIsInBoat());
+        Debug.Log(lamp.GetIsLight());
         if (boat.CheckIsInBoat() && lamp.GetIsLight())
         {
             DataManager.Instance.SaveClears(12);

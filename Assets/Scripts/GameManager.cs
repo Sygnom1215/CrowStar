@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -48,11 +49,20 @@ public class GameManager : MonoSingleton<GameManager>
 
             case 61:
                 return 6;
+
+            case 90:
+                return 11;
         }
 
         return -1;
     }
 
+    public void GameEnd()
+    {
+        DataManager.Instance.DataClear();
+        SceneManager.LoadScene(ConstantManager.LOBBY_SCENE);
+
+    }
 
 
     public void AddInventory(Item item)

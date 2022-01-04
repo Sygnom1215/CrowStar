@@ -56,6 +56,12 @@ public class DataManager : MonoSingleton<DataManager>
         Application.Quit();
     }
 
+    public void DataClear()
+    {
+        player = new Player(defaultSound);
+        SaveToJson();
+    }
+
     public void SaveClears(int index)
     {
         player.clearPuzzle[index] = true;

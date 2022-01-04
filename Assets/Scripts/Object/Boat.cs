@@ -11,7 +11,7 @@ public class Boat : ObjectBase
 
     private void Start()
     {
-        if(DataManager.Instance.CheckClear(11))
+        if(DataManager.Instance.CheckClear(12))
         {
             compass.SetActive(true);
             cnt++;
@@ -36,7 +36,7 @@ public class Boat : ObjectBase
             if(GameManager.Instance.GetCurItem().itemType == ItemType.Compass)
             {
                 compass.SetActive(true);
-                DataManager.Instance.SaveClears(11);
+                DataManager.Instance.SaveClears(12);
             }
             else if(GameManager.Instance.GetCurItem().itemType == ItemType.Paddle)
             {

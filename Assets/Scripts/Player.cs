@@ -10,11 +10,14 @@ public class Player
     public Item[] items;
     public bool[] clearPuzzle;
 
+    public bool watchedStory;
+
     public Player(float soundVolume)
     {
         effectSoundVolume = soundVolume;
         bgmSoundVolume = soundVolume;
         items = new Item[9];
-        clearPuzzle = new bool[15];
+        clearPuzzle = new bool[13];
+        watchedStory = false;
     }
 }

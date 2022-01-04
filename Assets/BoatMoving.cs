@@ -28,5 +28,14 @@ public class BoatMoving : MonoBehaviour
         aurora.DOFade(1f, 3f);
         yield return new WaitForSeconds(second / 4f);
         auroraText.DOFade(1f, 1f);
+
+        yield return new WaitForSeconds(1f);
+
+        aurora.DOColor(Color.black, 2f);
+
+        yield return new WaitForSeconds(2f);
+
+        GameManager.Instance.GameEnd();
+
     }
 }
