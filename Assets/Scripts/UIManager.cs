@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Text letterText;
     [SerializeField] private GameObject letterPanel;
+    [SerializeField] private GameObject letter;
 
     private RectTransform inventoryBar;
     private int sceneIndex = 0;
@@ -197,5 +198,6 @@ public class UIManager : MonoBehaviour
     {
         letterText.text = message;
         letterPanel.SetActive(true);
+        letter.SetActive(false);
     }
 }
