@@ -9,10 +9,12 @@ public class BoatMoving : MonoBehaviour
     [SerializeField] private Image aurora;
     [SerializeField] private Text auroraText;
     [SerializeField] private GameObject ui;
+    [SerializeField] private Sprite fullBoat;
 
     public void Move()
     {
-        SoundManager.Instance.SetEffectSound(9);
+        GetComponent<Image>().sprite = fullBoat;
+       SoundManager.Instance.SetEffectSound(9);
         StartCoroutine(MoveBoat());
     }
 

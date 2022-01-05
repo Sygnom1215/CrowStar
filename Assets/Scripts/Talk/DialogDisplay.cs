@@ -30,7 +30,7 @@ public class DialogDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             AdvanceConversation();
         }
@@ -51,6 +51,7 @@ public class DialogDisplay : MonoBehaviour
 
     private void AdvanceConversation()
     {
+        SoundManager.Instance.SetEffectSound(4);
         dialogueManager.SkipCheck();
         if (dialogueManager.isTypingCheck || dialogueManager.isSkipCheck) return;
         if (activeLineIndex < conversation.lines.Length)

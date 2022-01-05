@@ -30,6 +30,8 @@ public class DataManager : MonoSingleton<DataManager>
             Directory.CreateDirectory(SAVE_PATH);
         }
         LoadFromJson();
+
+        SoundVolumeUpdate();
     }
     private void LoadFromJson()
     {
@@ -54,6 +56,12 @@ public class DataManager : MonoSingleton<DataManager>
         player = new Player(defaultSound);
         SaveToJson();
         Application.Quit();
+    }
+
+    private void SoundVolumeUpdate()
+    {
+        SoundManager.Instance.BGMVolume(player.bgmSoundVolume);
+        SoundManager.Instance.EffectVolume(player.effectSoundVolume);
     }
 
     public void DataClear()

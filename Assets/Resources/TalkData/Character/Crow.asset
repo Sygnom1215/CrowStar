@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Crow
   m_EditorClassIdentifier: 
   name: "\uAE4C\uB9C8\uADC0"
-  characterImage: {fileID: 21300000, guid: d9f8d7beb81440145bbf1d8d8eb5af04, type: 3}
+  characterImage: {fileID: 21300000, guid: 819be3728b6749349886630a2db12d23, type: 3}

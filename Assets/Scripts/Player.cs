@@ -17,7 +17,7 @@ public class Player
         effectSoundVolume = soundVolume;
         bgmSoundVolume = soundVolume;
         items = new Item[9];
-        clearPuzzle = new bool[13];
+        clearPuzzle = new bool[14];
         watchedStory = false;
     }
 }

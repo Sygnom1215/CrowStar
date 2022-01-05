@@ -42,17 +42,12 @@ public class SoundManager : MonoSingleton<SoundManager>
     }
     public void SetBGM(int bgmNum)
     {
-        Debug.Log("À½¾Ç");
-        Debug.Log(bgms.Length);
-
         bgmAudio.Stop();
         bgmAudio.clip = bgms[bgmNum];
         bgmAudio.Play();
     }
     public void SetEffectSound(int effectNum)
     {
-        Debug.Log(effectSounds.Length);
-
         soundEffectAudio.Stop();
         soundEffectAudio.clip = effectSounds[effectNum];
         soundEffectAudio.Play();
