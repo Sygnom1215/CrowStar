@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     private RectTransform zoomOutButtonRect;
     private RectTransform inventoryBar;
     private int sceneIndex = 0;
+    private bool isQuitPanelOn = false;
 
     private int index = 4;
 
@@ -51,7 +52,16 @@ public class UIManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            quitPanel.SetActive(true);
+            if(isQuitPanelOn)
+            {
+                quitPanel.SetActive(false);
+                isQuitPanelOn = false;
+            }
+            else
+            {
+                quitPanel.SetActive(true);
+                isQuitPanelOn = true;
+            }
         }
 
     }
