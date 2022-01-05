@@ -12,6 +12,7 @@ public class BoatMoving : MonoBehaviour
 
     public void Move()
     {
+        SoundManager.Instance.SetEffectSound(9);
         StartCoroutine(MoveBoat());
     }
 

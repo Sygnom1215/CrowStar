@@ -32,9 +32,14 @@ public class Door : ObjectBase, IPointerUpHandler
             isOpen = true;
             DataManager.Instance.SaveClears(0);
             lockObject.transform.DOMoveY(-10f, 1f);
+            SoundManager.Instance.SetEffectSound(2);
             Destroy(lockObject, 1f);
             RemoveItem();
             StartCoroutine(NextStage());
+
+            //여기 문 여는 거
+
+
         }
     }
 

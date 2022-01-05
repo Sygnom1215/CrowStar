@@ -49,6 +49,7 @@ public class Lamp : ObjectBase
 
             else if (isFirstIn && item.itemType == ItemType.Matches)
             {
+                SoundManager.Instance.SetEffectSound(11);
                 OnUseItem(1);
                 DataManager.Instance.SaveClears(9);
                 lightGlow.SetActive(true);

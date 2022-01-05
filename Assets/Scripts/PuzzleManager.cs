@@ -45,6 +45,7 @@ public class PuzzleManager : MonoBehaviour
         curPuzzles[curPuzzles.Count - 1].SetActive(isActive);
         curPuzzles.RemoveAt(curPuzzles.Count - 1);
         GameManager.Instance.UIManager.ActiveZoomOutButton(!(curPuzzles.Count == 0));
+        SoundManager.Instance.SetEffectSound(4);
     }
 
     public void AddPuzzleScene(GameObject obj)

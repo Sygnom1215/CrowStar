@@ -12,6 +12,11 @@ public class Leaf : MonoBehaviour
        GetComponent<SpriteRenderer>().color = colors[Random.Range(0, colors.Length)];
     }
 
+    private void OnMouseDown()
+    {
+        SoundManager.Instance.SetEffectSound(7);
+    }
+
     private void OnMouseEnter()
     {
         if (isDestroying) return;

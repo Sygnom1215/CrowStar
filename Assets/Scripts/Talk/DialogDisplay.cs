@@ -12,6 +12,8 @@ public class DialogDisplay : MonoBehaviour
     private DialogueManager dialogueManager = null;
     private int activeLineIndex = 0;
 
+    private int index = 1;
+
     private void Awake()
     {
         talkerUIOther = talkerOther.GetComponent<TalkUI>();
@@ -21,6 +23,8 @@ public class DialogDisplay : MonoBehaviour
 
     private void Start()
     {
+        int value = 0;
+        SoundManager.Instance.SetBGM(value);
         AdvanceConversation();
     }
 
@@ -59,6 +63,7 @@ public class DialogDisplay : MonoBehaviour
             talkerUIOther.Hide();
             activeLineIndex = 0;
             DataManager.Instance.CurrentPlayer.watchedStory = true;
+            SoundManager.Instance.SetBGM(index);
             SceneManager.LoadScene(ConstantManager.MAIN_SCENE);
         }
     }

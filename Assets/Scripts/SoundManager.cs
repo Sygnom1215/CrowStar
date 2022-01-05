@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class SoundManager : MonoSingleton<SoundManager>
 {
-    private AudioClip[] effectSounds = null;
-    private AudioClip[] bgms = null;
+
+    [SerializeField] private AudioClip[] effectSounds = null;
+    [SerializeField] private AudioClip[] bgms = null;
+
     private AudioSource bgmAudio;
     private AudioSource soundEffectAudio;
 
@@ -21,9 +23,6 @@ public class SoundManager : MonoSingleton<SoundManager>
 
         bgmAudio = GetComponent<AudioSource>();
         soundEffectAudio = transform.GetChild(0).GetComponent<AudioSource>();
-
-        bgms = Resources.LoadAll<AudioClip>("Audios/BGMs");
-        effectSounds = Resources.LoadAll<AudioClip>("Audios/Effects");
     }
 
     public void BGMVolume(float value)
@@ -43,14 +42,18 @@ public class SoundManager : MonoSingleton<SoundManager>
     }
     public void SetBGM(int bgmNum)
     {
+        Debug.Log("À½¾Ç");
+        Debug.Log(bgms.Length);
+
         bgmAudio.Stop();
         bgmAudio.clip = bgms[bgmNum];
         bgmAudio.Play();
     }
     public void SetEffectSound(int effectNum)
     {
-        soundEffectAudio.Stop();
+        Debug.Log(effectSounds.Length);
 
+        soundEffectAudio.Stop();
         soundEffectAudio.clip = effectSounds[effectNum];
         soundEffectAudio.Play();
     }
