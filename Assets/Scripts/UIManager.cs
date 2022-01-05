@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     private RectTransform inventoryBar;
     private int sceneIndex = 0;
 
+    private int index = 4;
+
     private void Start()
     {
         Init();
@@ -112,6 +114,8 @@ public class UIManager : MonoBehaviour
 
     public void NextBackgroundButton()
     {
+        SoundManager.Instance.SetEffectSound(index);
+
         int stageNum = GameManager.Instance.GetCurrentStage();
         if (sceneIndex > backgroundsList[stageNum].GetCount()) return;
         backgroundsList[stageNum].ActiveBackgrounds(++sceneIndex);
@@ -122,6 +126,8 @@ public class UIManager : MonoBehaviour
 
     public void PreviousBackgroundButton()
     {
+        SoundManager.Instance.SetEffectSound(index);
+
         int stageNum = GameManager.Instance.GetCurrentStage();
         if (sceneIndex > backgroundsList[stageNum].GetCount()) return;
         backgroundsList[stageNum].ActiveBackgrounds(--sceneIndex);

@@ -50,6 +50,7 @@ public class Tree : MonoBehaviour
     {
         if (transform.childCount == 0 && !isGetItem)
         {
+            SoundManager.Instance.SetEffectSound(6);
             GameManager.Instance.AddInventory(GameManager.Instance.items.Find(x => x.itemType == ItemType.Branch));
             isGetItem = true;
             DataManager.Instance.SaveClears(7); 

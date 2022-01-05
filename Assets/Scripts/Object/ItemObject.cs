@@ -30,10 +30,13 @@ public class ItemObject : MonoBehaviour
     {
         if (itemData.itemType == ItemType.Count) return;
 
+        SoundManager.Instance.SetEffectSound(6);
+
         if (itemData.itemType == ItemType.BrokenKey && GameManager.Instance.UIManager.CheckIsInInventory(itemData.itemType))
         {
             GameManager.Instance.UIManager.RemoveItem(itemData.itemType);
             GameManager.Instance.UIManager.AddInventory(GameManager.Instance.items[(int)ItemType.Key]);
+
         }
 
         else

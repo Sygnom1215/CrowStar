@@ -25,6 +25,7 @@ public class Box : ObjectBase, IPointerUpHandler
 
         else
         {
+            SoundManager.Instance.SetEffectSound(8);
             Open();
             base.RemoveItem();
             isOpen = true;
