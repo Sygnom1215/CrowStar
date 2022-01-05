@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Bull
   m_EditorClassIdentifier: 
   name: "\uD669\uC18C\uC790\uB9AC"
-  characterImage: {fileID: 21300000, guid: 4ae6dcf1df0068545b86c89b2336610f, type: 3}
+  characterImage: {fileID: 6124782073139786111, guid: f313110b2ffebb044b38a0d65557c11c, type: 3}
