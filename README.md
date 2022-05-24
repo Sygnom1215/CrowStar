@@ -1,3 +1,5 @@
 # CrowStar
 
-github 웹훅 테스트
+2021년 1학년 GUI 전공동아리
+
+Last Update : 6 Jan 2022
